@@ -13,6 +13,7 @@
         font-family: sans-serif;
         margin: 5% 10%;
         color: white;
+        line-height: 150%;
       }
 
       ::-moz-selection {
@@ -29,21 +30,28 @@
 
       #tabela,
       td,
-      tr {
+      tr,
+      th {
         border: 1px solid black;
         border-collapse: collapse;
         padding: 10px;
         user-select: none;
       }
 
-      td {
+      td,
+      th {
         background-color: #222222;
+      }
+
+      .fa-arrow-left,
+      .fa-arrow-right {
+        font-size: 1.3em;
       }
 
       .iau,
       .l_ozvezdje,
       .ozvezdje {
-        color: #222222;
+        color: #ffffff;
       }
 
       td:hover {
@@ -62,26 +70,111 @@
       #domov:active {
         background-color: rgba(50, 20, 60, 1);
       }
+
+      .finder_chart {
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .fa-arrow-left,
+      .fa-arrow-right {
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      .fa-arrow-left:hover,
+      .fa-arrow-right:hover {
+        background-color: #777777;
+        box-shadow: 1px 1px;
+      }
+
+      .fa-arrow-left:active,
+      .fa-arrow-right:active {
+        background-color: #887788;
+        box-shadow: 1px 1px;
+      }
+
+      button {
+        background-color: #222222;
+        border: none;
+        padding: 8px 20px;
+        text-align: center;
+        display: inline-block;
+        color: white;
+        font-weight: bolder;
+        font-size: 1em;
+        border-radius: 10px;
+        margin: 0px 10px;
+      }
+
+      #kontrolerjiDiv button:hover {
+        background-color: #559955;
+      }
+
+      #kontrolerjiDiv button:active {
+        background-color: #55aa55;
+      }
+
+      .napisHeader {
+        padding: 5px 10px;
+        margin: 5px 0px;
+      }
+
+      .napisHeader:hover {
+        background-color: #bb3333;
+      }
+
+      .napisHeader:active {
+        background-color: #cc3333;
+      }
+
+      button:hover {
+        background-color: #555555;
+      }
+
+      button:active {
+        background-color: #777777;
+      }
+
+      .infoTd {
+        background-color: #4444cc;
+        text-align: center;
+      }
+
+      .infoTd:hover {
+        background-color: #aaaaaa;
+      }
+
+      .infoTd:active {
+        background-color: #bbbbbb;
+      }
     </style>
   </head>
   <body>
     <a id="domov" style="font-size: 3em;" href="../">
       <i class="fa fa-home"></i>
     </a>
-    <h1>Tabela Messierjevih objektov za učenje</h1>
-    <table id="tabela">
-      <thead>
-        <tr>
-          <td>#</td>
-          <td>IAU</td>
-          <td>L. ozvezdje</td>
-          <td>Ozvezdje</td>
-        </tr>
-      </thead>
-    </table>
+    <h1>Tabela Messierjevih objektov</h1>
     <p>
-      <em>Za prikaz parametra pridrži miško (računalnik) oziroma pritisni na polje (telefon).</em>
+      <em>Tabela je namenjena učenju, saj ima veliko možnosti uporabe. V skritem način za prikaz parametra pridrži miško (računalnik) oziroma pritisni na polje (telefon). </em>
     </p>
+    <hr />
+    <p>
+      <button onclick="nakljucno()">Naključno</button>
+      <button onclick="razvrsti()">Razvrsti</button>
+    </p>
+    <hr />
+    <label for"pokaziVse">Pokaži vse: </label>
+    <input name="pokaziVse" type="checkbox" onchange="prikaziVse()" checked="checked" id="prikaziVseC" />
+    <br />
+    <label for="kontrolerjiB">Kontrolerji: </label>
+    <input name="kontrolerjiB" type="checkbox" onchange="init()" id="kontrolerjiB" />
+    <br />
+    <p id="navodilaKontrolerji" style="display:none;"><em>Za premikanje stolpcev levo in desno uporabi puščice v celicah. Za dodajanje stolpca klikni gumb iz tega seznama. Za odstranjevanje stolpca klikni na ime parametra v tabeli.</em></p>
+    <div id="kontrolerjiDiv"></div>
+    <hr />
+    <br />
+    <table id="tabela"></table>
     <script type="text/javascript" src="messier.js"></script>
   </body>
 </html>
