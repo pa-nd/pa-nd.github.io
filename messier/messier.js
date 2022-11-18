@@ -217,7 +217,7 @@ function odpriN(n) {
 	var vrsta = tabela.insertRow(vrstniRed.indexOf(n)+2);
 	var celica = vrsta.insertCell(0);
 	celica.setAttribute("colspan", 100);
-	celica.innerHTML="<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" class=\"finder_chart\" />";
+	celica.innerHTML="<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" alt=\"Karta za M" + (n+1) + "\" class=\"finder_chart\" />";
 
 }
 
