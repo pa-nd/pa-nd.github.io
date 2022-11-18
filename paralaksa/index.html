@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="sl" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>Paralaksa</title>
+    <link rel="icon" type="image/x-icon" href="../iss_logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body {
+        background: rgba(71, 155, 186, 1);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(71, 155, 186, 1) 100%);
+        font-family: sans-serif;
+        margin: 5% 10%;
+        color: white;
+      }
+
+      ::-moz-selection {
+        background: #1a3587;
+      }
+
+      ::selection {
+        background: #1a3587;
+      }
+
+      a {
+        color: white;
+      }
+
+      #domov {
+        background-color: rgba(40, 40, 80, 1);
+        padding: 10px;
+      }
+
+      #domov:hover {
+        background-color: rgba(20, 20, 60, 1);
+      }
+
+      #domov:active {
+        background-color: rgba(50, 20, 60, 1);
+      }
+    </style>
+    <script src="script.js"></script>
+  </head>
+  <body onload="izracunajVisino()">
+    <a id="domov" style="font-size: 3em;" href="../index.html">
+      <i class="fa fa-home"></i>
+    </a>
+    <h1>Paralaksa</h1>
+    <button onclick="izbrisiVse()">Izbriši vse</button>
+    <h2>Koordinate objekta</h2>
+    <p>
+      <em>Program iz vpisanih podatkov izračuna razne parametre glede opazovanega objekta, pri čemer je Zemlja elipsoid.
+			Tukaj le iz zgodovinskih razlogov : )</em>
+    </p>
+    <table>
+      <tr>
+        <td>RA1:</td>
+        <td>
+          <input id="ra1" type="time" oninput="izracunajPolozaj()" step="0.1" value="18:56:40.370"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>Dec.1:</td>
+        <td>
+          <input id="dec11" type="number" step="1" min="0" max="360" oninput="izracunajPolozaj()" size="1" value="-26"></input>° <input id="dec12" type="number" step="1" min="0" max="60" oninput="izracunajPolozaj()" size="2" value="16"></input>' <input id="dec13" type="number" step="0.01" min="0" max="60" oninput="izracunajPolozaj()" size="5" value="6.1"></input>"
+        </td>
+      </tr>
+      <tr>
+        <td>RA2:</td>
+        <td>
+          <input id="ra2" type="time" oninput="izracunajPolozaj()" step="0.1" value="19:04:03.390"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>Dec.2:</td>
+        <td>
+          <input id="dec21" type="number" step="1" min="0" max="360" oninput="izracunajPolozaj()" size="1" value="-29"></input>° <input id="dec22" type="number" step="1" min="0" max="60" oninput="izracunajPolozaj()" size="2" value="50"></input>' <input id="dec23" type="number" step="0.01" min="0" max="60" oninput="izracunajPolozaj()" size="5" value="51.2"></input>"
+        </td>
+      </tr>
+      <tr>
+        <td>d <sub>1</sub>: </td>
+        <td>
+          <input value="156.5" id="d1" type="number" oninput="izracunajPolozaj()"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>d <sub>2</sub>: </td>
+        <td>
+          <input value="113.1" id="d2" type="number" oninput="izracunajPolozaj()"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>φ: </sub>
+        </td>
+        <td>
+          <input value="64.73" id="fi" type="number" oninput="izracunajPolozaj()" min="-180" max="180"></input>°
+        </td>
+      </tr>
+    </table>
+    <p id="dec">Vpiši podatke za izvedbo programa!</p>
+    <p id="ra"></p>
+    <img src="triangle_parameters.png" style="width: 50%; border: 1px solid black;" alt="Trikotnik s parametri" />
+    <hr />
+    <h2>Višina in oddaljenost</h2>
+    <table>
+      <tr>
+        <td>Geo. širina 1:</td>
+        <td>
+          <input id="fi1" type="number" min="-90" max="90" value="43.605467" step="0.01" oninput="izracunajVisino()"></input>°
+        </td>
+      </tr>
+      <tr>
+        <td>Geo. dolžina 1:</td>
+        <td>
+          <input id="lambda1" type="number" min="-180" max="180" value="7.071414" step="0.01" oninput="izracunajVisino()"></input>°
+        </td>
+      </tr>
+      <tr>
+        <td>Nad. višina 1:</td>
+        <td>
+          <input id="h1" type="number" min="0" max="9999" value="90" oninput="izracunajVisino()"></input> m
+        </td>
+      </tr>
+      <tr>
+        <td>Geo. širina 2:</td>
+        <td>
+          <input id="fi2" type="number" min="-90" max="90" value="45.79918" step="0.01" oninput="izracunajVisino()"></input>°
+        </td>
+      </tr>
+      <tr>
+        <td>Geo. dolžina 2:</td>
+        <td>
+          <input id="lambda2" type="number" min="-180" max="180" value="14.687" step="0.01" oninput="izracunajVisino()"></input>°
+        </td>
+      </tr>
+      <tr>
+        <td>Nad. višina 2:</td>
+        <td>
+          <input id="h2" type="number" min="0" max="9999" value="639" oninput="izracunajVisino()"></input> m
+        </td>
+      </tr>
+      <tr>
+        <td>RA1:</td>
+        <td>
+          <input id="vra1" type="time" oninput="izracunajVisino()" step="0.1" value="14:18:33.780"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>Dec.1:</td>
+        <td>
+          <input id="vdec11" type="number" step="1" min="0" max="360" oninput="izracunajVisino()" size="1" value="50"></input>° <input id="vdec12" type="number" step="1" min="0" max="60" oninput="izracunajVisino()" size="2" value="5"></input>' <input id="vdec13" type="number" step="0.01" min="0" max="60" oninput="izracunajVisino()" size="5" value="16.8"></input>"
+        </td>
+      </tr>
+      <tr>
+        <td>RA2:</td>
+        <td>
+          <input id="vra2" type="time" oninput="izracunajVisino()" step="0.1" value="13:16:45.820"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>Dec.2:</td>
+        <td>
+          <input id="vdec21" type="number" step="1" min="0" max="360" oninput="izracunajVisino()" size="1" value="12"></input>° <input id="vdec22" type="number" step="1" min="0" max="60" oninput="izracunajVisino()" size="2" value="14"></input>' <input id="vdec23" type="number" step="0.01" min="0" max="60" oninput="izracunajVisino()" size="5" value="19.0"></input>"
+        </td>
+      </tr>
+    </table>
+    <p id="lambdaResult">Vpiši podatke za izvedbo programa!</p>
+    <p id="fiResult"></p>
+    <p id="RResult"></p>
+    <p id="HResult"></p>
+    <hr />
+  </body>
+</html>

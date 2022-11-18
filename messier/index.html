@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sl" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>Messierjevi objekti</title>
+    <link rel="icon" type="image/x-icon" href="iss_logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body {
+        background: rgba(71, 155, 186, 1);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(40, 80, 100, 1) 100%);
+        font-family: sans-serif;
+        margin: 5% 10%;
+        color: white;
+      }
+
+      ::-moz-selection {
+        background: #1a3587;
+      }
+
+      ::selection {
+        background: #1a3587;
+      }
+
+      a {
+        color: white;
+      }
+
+      #tabela,
+      td,
+      tr {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+        user-select: none;
+      }
+
+      td {
+        background-color: #222222;
+      }
+
+      .iau,
+      .l_ozvezdje,
+      .ozvezdje {
+        color: #222222;
+      }
+
+      td:hover {
+        color: white;
+      }
+
+      #domov {
+        background-color: rgba(40, 40, 80, 1);
+        padding: 10px;
+      }
+
+      #domov:hover {
+        background-color: rgba(20, 20, 60, 1);
+      }
+
+      #domov:active {
+        background-color: rgba(50, 20, 60, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <a id="domov" style="font-size: 3em;" href="../index.html">
+      <i class="fa fa-home"></i>
+    </a>
+    <h1>Tabela Messierjevih objektov za učenje</h1>
+    <table id="tabela">
+      <thead>
+        <tr>
+          <td>#</td>
+          <td>IAU</td>
+          <td>L. ozvezdje</td>
+          <td>Ozvezdje</td>
+        </tr>
+      </thead>
+    </table>
+    <p>
+      <em>Za prikaz parametra pridrži miško (računalnik) oziroma pritisni na polje (telefon).</em>
+    </p>
+    <script type="text/javascript" src="messier.js"></script>
+  </body>
+</html>
