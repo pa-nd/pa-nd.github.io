@@ -1,132 +1,35 @@
-var data = [
-	{"iau":"Tau", "l_ozvezdje":"Taurus", "ozvezdje":"Bik"},
-	{"iau":"Aqr", "l_ozvezdje":"Aquarius", "ozvezdje":"Vodnar"},
-	{"iau":"CVn", "l_ozvezdje":"Canes Venatici", "ozvezdje":"Lovska psa"},
-	{"iau":"Sco", "l_ozvezdje":"Scorpius", "ozvezdje":"Škorpijon"},
-	{"iau":"Ser", "l_ozvezdje":"Serpens", "ozvezdje":"Kača"},
-	{"iau":"Sco", "l_ozvezdje":"Scorpius", "ozvezdje":"Škorpijon"},
-	{"iau":"Sco", "l_ozvezdje":"Scorpius", "ozvezdje":"Škorpijon"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Oph", "l_ozvezdje":"Ophiuchus", "ozvezdje":"Kačenosec"},
-	{"iau":"Oph", "l_ozvezdje":"Ophiuchus", "ozvezdje":"Kačenosec"},
-	{"iau":"Sct", "l_ozvezdje":"Scutum", "ozvezdje":"Ščit"},
-	{"iau":"Oph", "l_ozvezdje":"Ophiuchus", "ozvezdje":"Kačenosec"},
-	{"iau":"Her", "l_ozvezdje":"Hercules", "ozvezdje":"Herkul"},
-	{"iau":"Oph", "l_ozvezdje":"Ophiuchus", "ozvezdje":"Kačenosec"},
-	{"iau":"Peg", "l_ozvezdje":"Pegasus", "ozvezdje":"Pegaz"},
-	{"iau":"Ser", "l_ozvezdje":"Serpens", "ozvezdje":"Kača"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Oph", "l_ozvezdje":"Ophiuchus", "ozvezdje":"Kačenosec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sct", "l_ozvezdje":"Scutum", "ozvezdje":"Ščit"},
-	{"iau":"Vul", "l_ozvezdje":"Vulpecula", "ozvezdje":"Lisička"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Cyg", "l_ozvezdje":"Cygnus", "ozvezdje":"Labod"},
-	{"iau":"Cap", "l_ozvezdje":"Capricornus", "ozvezdje":"Kozorog"},
-	{"iau":"And", "l_ozvezdje":"Andromeda", "ozvezdje":"Andromeda"},
-	{"iau":"And", "l_ozvezdje":"Andromeda", "ozvezdje":"Andromeda"},
-	{"iau":"Tri", "l_ozvezdje":"Triangulum", "ozvezdje":"Trikotnik"},
-	{"iau":"Per", "l_ozvezdje":"Perseus", "ozvezdje":"Perzej"},
-	{"iau":"Gem", "l_ozvezdje":"Gemini", "ozvezdje":"Dvojčka"},
-	{"iau":"Aur", "l_ozvezdje":"Auriga", "ozvezdje":"Voznik"},
-	{"iau":"Aur", "l_ozvezdje":"Auriga", "ozvezdje":"Voznik"},
-	{"iau":"Aur", "l_ozvezdje":"Auriga", "ozvezdje":"Voznik"},
-	{"iau":"Cyg", "l_ozvezdje":"Cygnus", "ozvezdje":"Labod"},
-	{"iau":"UMa", "l_ozvezdje":"Ursa Major", "ozvezdje":"Veliki medved"},
-	{"iau":"CMa", "l_ozvezdje":"Canis Major", "ozvezdje":"Veliki pes"},
-	{"iau":"Ori", "l_ozvezdje":"Orion", "ozvezdje":"Orion"},
-	{"iau":"Ori", "l_ozvezdje":"Orion", "ozvezdje":"Orion"},
-	{"iau":"Cnc", "l_ozvezdje":"Cancer", "ozvezdje":"Rak"},
-	{"iau":"Tau", "l_ozvezdje":"Taurus", "ozvezdje":"Bik"},
-	{"iau":"Pup", "l_ozvezdje":"Puppis", "ozvezdje":"Krma"},
-	{"iau":"Pup", "l_ozvezdje":"Puppis", "ozvezdje":"Krma"},
-	{"iau":"Hya", "l_ozvezdje":"Hydra", "ozvezdje":"Vodna kača"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Mon", "l_ozvezdje":"Monoceros", "ozvezdje":"Samorog"},
-	{"iau":"CVn", "l_ozvezdje":"Canes Venatici", "ozvezdje":"Lovska psa"},
-	{"iau":"Cas", "l_ozvezdje":"Cassiopeia", "ozvezdje":"Kasiopeja"},
-	{"iau":"Com", "l_ozvezdje":"Coma Berenices", "ozvezdje":"Berenikini kodri"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Lyr", "l_ozvezdje":"Lyra", "ozvezdje":"Lira"},
-	{"iau":"Lyr", "l_ozvezdje":"Lyra", "ozvezdje":"Lira"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Oph", "l_ozvezdje":"Ophiuchus", "ozvezdje":"Kačenosec"},
-	{"iau":"CVn", "l_ozvezdje":"Canes Venatici", "ozvezdje":"Lovska psa"},
-	{"iau":"Com", "l_ozvezdje":"Coma Berenices", "ozvezdje":"Berenikini kodri"},
-	{"iau":"Leo", "l_ozvezdje":"Leo", "ozvezdje":"Lev"},
-	{"iau":"Leo", "l_ozvezdje":"Leo", "ozvezdje":"Lev"},
-	{"iau":"Cnc", "l_ozvezdje":"Cancer", "ozvezdje":"Rak"},
-	{"iau":"Hya", "l_ozvezdje":"Hydra", "ozvezdje":"Vodna kača"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Sge", "l_ozvezdje":"Sagitta", "ozvezdje":"Puščica"},
-	{"iau":"Aqr", "l_ozvezdje":"Aquarius", "ozvezdje":"Vodnar"},
-	{"iau":"Aqr", "l_ozvezdje":"Aquarius", "ozvezdje":"Vodnar"},
-	{"iau":"Psc", "l_ozvezdje":"Pisces", "ozvezdje":"Ribi"},
-	{"iau":"Sgr", "l_ozvezdje":"Sagittarius", "ozvezdje":"Strelec"},
-	{"iau":"Per", "l_ozvezdje":"Perseus", "ozvezdje":"Perzej"},
-	{"iau":"Cet", "l_ozvezdje":"Cetus", "ozvezdje":"Kit"},
-	{"iau":"Ori", "l_ozvezdje":"Orion", "ozvezdje":"Orion"},
-	{"iau":"Lep", "l_ozvezdje":"Lepus", "ozvezdje":"Zajec"},
-	{"iau":"Sco", "l_ozvezdje":"Scorpius", "ozvezdje":"Škorpijon"},
-	{"iau":"UMa", "l_ozvezdje":"Ursa Major", "ozvezdje":"Veliki medved"},
-	{"iau":"UMa", "l_ozvezdje":"Ursa Major", "ozvezdje":"Veliki medved"},
-	{"iau":"Hya", "l_ozvezdje":"Hydra", "ozvezdje":"Vodna kača"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Com", "l_ozvezdje":"Coma Berenices", "ozvezdje":"Berenikini kodri"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Com", "l_ozvezdje":"Coma Berenices", "ozvezdje":"Berenikini kodri"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Com", "l_ozvezdje":"Coma Berenices", "ozvezdje":"Berenikini kodri"},
-	{"iau":"Her", "l_ozvezdje":"Hercules", "ozvezdje":"Krma"},
-	{"iau":"Pup", "l_ozvezdje":"Puppis", "ozvezdje":"Krma"},
-	{"iau":"CVn", "l_ozvezdje":"Canes Venatici", "ozvezdje":"Lovska psa"},
-	{"iau":"Leo", "l_ozvezdje":"Leo", "ozvezdje":"Lev"},
-	{"iau":"Leo", "l_ozvezdje":"Leo", "ozvezdje":"Lev"},
-	{"iau":"UMa", "l_ozvezdje":"Ursa Major", "ozvezdje":"Veliki medved"},
-	{"iau":"Com", "l_ozvezdje":"Coma Berenices", "ozvezdje":"Berenikini kodri"},
-	{"iau":"Com", "l_ozvezdje":"Coma Berenices", "ozvezdje":"Berenikini kodri"},
-	{"iau":"Com", "l_ozvezdje":"Coma Berenices", "ozvezdje":"Berenikini kodri"},
-	{"iau":"UMa", "l_ozvezdje":"Ursa Major", "ozvezdje":"Veliki medved"},
-	{"iau":"Dra", "l_ozvezdje":"Draco", "ozvezdje":"Zmaj"},
-	{"iau":"Cas", "l_ozvezdje":"Cassiopeia", "ozvezdje":"Kasiopeja"},
-	{"iau":"Vir", "l_ozvezdje":"Virgo", "ozvezdje":"Devica"},
-	{"iau":"Leo", "l_ozvezdje":"Leo", "ozvezdje":"Lev"},
-	{"iau":"CVn", "l_ozvezdje":"Canes Venatici", "ozvezdje":"Lovska psa"},
-	{"iau":"Oph", "l_ozvezdje":"Ophiuchus", "ozvezdje":"Kačenosec"},
-	{"iau":"UMa", "l_ozvezdje":"Ursa Major", "ozvezdje":"Veliki medved"},
-	{"iau":"UMa", "l_ozvezdje":"Ursa Major", "ozvezdje":"Veliki medved"},
-	{"iau":"And", "l_ozvezdje":"Andromeda", "ozvezdje":"Andromeda"}];
+///// INICIALIZACIJA PODATKOV /////
+// var data je definiran v data.js
 var tabela = document.getElementById("tabela");
 var kontrolerjiB = document.getElementById("kontrolerjiB");
 var kontrolerjiDiv = document.getElementById("kontrolerjiDiv");
+// Specifikacije parametrov
 var sp = {
 	"iau": {"koda": "iau", "ime": "IAU", "sirina": 4},
 	"l_ozvezdje": {"koda": "l_ozvezdje", "ime": "L. ozvezdje", "sirina": 14},
 	"ozvezdje": {"koda": "ozvezdje", "ime": "Ozvezdje", "sirina": 13}
 };
+// Parametri v tabeli
 var curLayout = [sp.iau, sp.l_ozvezdje];
+// Parametri zunaj tabele
 var remLayout = [sp.ozvezdje];
+// Vrstni red objektov
 var vrstniRed = [];
 for (var i = 0; i < 110; i++) {
 	vrstniRed.push(i);
 }
+// Skriti način
 var prikazanoVse = true;
-
+// Prikazani kontrolerji
 var kontrolerji = false;
 
+////////////////////
+///// FUNKCIJE /////
+////////////////////
+
+///// POSTAVITEV TABELE //////
+// Dodaj celico
+// vrsta, številka vrstice, zap. št. objekta, kodno ime
 function dCel(vrsta, i, n, ime) {
 	var celica = vrsta.insertCell(i);
 	celica.className = ime;
@@ -136,6 +39,7 @@ function dCel(vrsta, i, n, ime) {
 	return celica;
 }
 
+// Funkcija, ki se sproži ob vsaki posodobitvi
 function init() {
 	kontrolerji = kontrolerjiB.checked;
 
@@ -153,10 +57,12 @@ function init() {
 		kontrolerjiDiv.style.display = "none";
 	}
 	kontrolerjiDiv.innerHTML = "";
+	// Prikaži gumbe v kontrolerskem divu
 	for (el in remLayout) {
 		kontrolerjiDiv.innerHTML += "<button id=\"" + remLayout[el].koda + "-r\" onclick=\"kontrolerDodaj(this)\">" + remLayout[el].ime + "</button>";
 	}
 
+	// Glava tabele
 	var headString = "<thead><tr><th id=\"ime-h\" style=\"width: 2ch;\">#</th>";
 	for (const elem in curLayout) {
 		headString += "<th id=\"" + curLayout[elem].koda + "-h\" style=\"width:" + curLayout[elem].sirina + "ch;\">";
@@ -171,14 +77,18 @@ function init() {
 	}
 	headString += "<th id=\"podrobnosti-h\">Info</th></tr></thead>";
 	tabela.innerHTML = headString;
+
+	// Za vsako vrstico, vnesi celice
 	for (var j = 0; j < 110; j++) {
 		var elem = vrstniRed[j];
 		var vrsta = tabela.insertRow(j+1);
 
 		var ime = dCel(vrsta, 0, elem, "ime");
 		ime.innerHTML = "M" + (elem+1);
+		// Za vsak izbran parameter ...
 		for (const eleme in curLayout) {
 			var celica = dCel(vrsta, parseInt(eleme)+1, elem, curLayout[eleme].koda);
+			// Če ni skriti način, prikaži vse vrednosti
 			if (prikazanoVse) {
 				celica.innerHTML = data[elem][curLayout[eleme].koda];
 			}
@@ -186,10 +96,14 @@ function init() {
 		var podrobnosti = dCel(vrsta, curLayout.length + 1, elem, "podrobnosti");
 		podrobnosti.className = "infoTd";
 		podrobnosti.setAttribute("onclick", "info(" + elem + ")");
+		podrobnosti.setAttribute("title", "info(" + elem + ")");
 		podrobnosti.innerHTML = "<i class=\"podrobnosti fa fa-info-circle\"></i>";
 	}
 
 }
+
+///// PRIKAZ SKRITIH VREDNOSTI /////
+// Ko je miška nad celico
 function pokaziParam(id) {
 	if (!prikazanoVse) {
 		var celica = document.getElementById(id);
@@ -199,6 +113,7 @@ function pokaziParam(id) {
 		}
 	}
 }
+// Ko gre miška ven iz celice
 function skrijParam(id) {
 	if (!prikazanoVse) {
 		var celica = document.getElementById(id);
@@ -207,23 +122,29 @@ function skrijParam(id) {
 			celica.innerHTML = "";
 		}
 	}
-
 }
+
+///// PRIKAZ PODROBNOSTI /////
 var odprtInfo = false;
 var odprtI = -1;
 
+// Odpri okno s podrobnostmi
 function odpriN(n) {
 	odprtI = n;
 	var vrsta = tabela.insertRow(vrstniRed.indexOf(n)+2);
 	var celica = vrsta.insertCell(0);
-	celica.setAttribute("colspan", 100);
-	celica.innerHTML="<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" alt=\"Karta za M" + (n+1) + "\" class=\"finder_chart\" />";
-
+	celica.setAttribute("colspan", 4);
+	var celicaBes = "<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" alt=\"Karta za M" + (n+1) + "\" class=\"finder_chart\" />";
+	celicaBes += "<img src=\"skice/s" + (n+1) + ".jpg\" alt=\"Skica od M" + (n+1) + "\" class=\"skica\" />";
+	celica.innerHTML = celicaBes;
 }
 
+// Ko kliknem na info ...
 function info(n) {
+	// Če je že odprt, ga zapri in odpri novega ...
 	if (odprtInfo) {
-		tabela.deleteRow(vrstniRed.indexOf(n)+2);
+		tabela.deleteRow(vrstniRed.indexOf(odprtI)+2);
+		// ... razen če je oseba kliknila istega
 		if (odprtI === n) {
 			odprtInfo = false;
 			odprtI = -1;
@@ -232,11 +153,21 @@ function info(n) {
 			odpriN(n);
 		}
 	}
+	// Sicer odpri
 	else {
 		odprtInfo = true;
 		odpriN(n);
 	}
 }
+///// SKRITI NAČIN /////
+// Prikaži/skrij vse
+function prikaziVse() {
+	prikazanoVse = document.getElementById("prikaziVseC").checked;
+	init();
+}
+
+///// KONTROLERJI /////
+// Dodaj parameter v tabelo
 function kontrolerDodaj(element) {
 	var id = element.id;
 	var ime = id.slice(0, -2);
@@ -246,6 +177,7 @@ function kontrolerDodaj(element) {
 	remLayout.splice(indeks, 1);
 	init();
 }
+// Odstrani parameter iz tabele
 function kontrolerOdstrani(element) {
 	if (kontrolerji) {
 		var id = element.id;
@@ -256,8 +188,8 @@ function kontrolerOdstrani(element) {
 		curLayout.splice(indeks, 1);
 		init();
 	}
-
 }
+// Premakni parameter levo
 function kontrolerLevo(element) {
 	var id = element.id;
 	var ime = id.slice(0, -2);
@@ -274,6 +206,7 @@ function kontrolerLevo(element) {
 	}
 	init();
 }
+// Premakni parameter desno
 function kontrolerDesno(element) {
 	var id = element.id;
 	var ime = id.slice(0, -2);
@@ -290,19 +223,35 @@ function kontrolerDesno(element) {
 	}
 	init();
 }
+
+///// VRSTNI RED /////
+// Naključno razporedi
 function nakljucno() {
 	vrstniRed = vrstniRed.sort((a, b) => 0.5 - Math.random());
 	init();
 }
+// Razvrsti od 1 do 110
 function razvrsti() {
 	for (var i = 0; i < 110; i++) {
 		vrstniRed[i] = i;
 	}
 	init();
 }
-function prikaziVse() {
-	prikazanoVse = document.getElementById("prikaziVseC").checked;
+// Maratonski vrstni red
+function vrstniRedMaraton() {
+	vrstniRed = [
+		76, 73, 32, 30, 31, 109, 51, 102, 75, 33, 44, 78, 41, 42, 77, 0, 34, 36, 35, 37,
+		40, 92, 46, 45, 49, 47, 43, 66, 94, 95, 104, 64, 65, 80, 81, 96, 107, 109, 39, 105,
+		93, 62, 50, 100, 101, 52, 63, 2, 97, 98, 99, 84, 83, 85, 86, 88, 89, 87, 90, 57,
+		58, 59, 48, 60, 103, 67, 82, 4, 12, 91, 56, 55, 28, 38, 26, 70, 106, 9, 11, 13,
+		8, 3, 79, 18, 61, 5, 6, 10, 25, 15, 16, 17, 23, 24, 22, 20, 19, 7, 27, 21,
+		68, 69, 53, 54, 74, 14, 1, 71, 72, 29
+	];
 	init();
 }
 
+
+/////////////////////////
+///// ZAČNI PROGRAM /////
+/////////////////////////
 init();
