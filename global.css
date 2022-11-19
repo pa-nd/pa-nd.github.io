@@ -1,0 +1,45 @@
+body {
+  background: rgba(71, 155, 186, 1);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(71, 155, 186, 1) 100%);
+  color: white;
+  line-height: 150%;
+  margin: 5% 10%;
+  font-family: sans-serif;
+}
+
+::-moz-selection {
+  background: #1a3587;
+}
+
+::selection {
+  background: #1a3587;
+}
+
+a {
+  color: white;
+}
+a:hover {
+  color: #aaa;
+}
+a:active {
+  color: #ddaaaa;
+}
+
+#domov {
+  background-color: rgba(40, 40, 80, 1);
+  padding: 10px;
+  font-size: 2em;
+}
+
+#domov:hover {
+  background-color: rgba(20, 20, 60, 1);
+  color: white;
+}
+
+#domov:active {
+  background-color: rgba(50, 20, 60, 1);
+  color: white;
+}
+hr {
+  border-top: 1px solid #7cd2e6;
+}

@@ -88,6 +88,8 @@ function init() {
 
 		var ime = dCel(vrsta, 0, elem, "ime");
 		ime.innerHTML = "M" + (elem+1);
+		ime.setAttribute("onmouseover", "prikaziVrstico(" + elem + ")");
+		ime.setAttribute("onmouseout", "skrijVrstico(" + elem + ")");
 		// Za vsak izbran parameter ...
 		for (const eleme in curLayout) {
 			var celica = dCel(vrsta, parseInt(eleme)+1, elem, curLayout[eleme].koda);
@@ -99,13 +101,17 @@ function init() {
 		var podrobnosti = dCel(vrsta, curLayout.length + 1, elem, "podrobnosti");
 		podrobnosti.className = "infoTd";
 		podrobnosti.setAttribute("onclick", "info(" + elem + ")");
-		podrobnosti.setAttribute("title", "info(" + elem + ")");
 		podrobnosti.innerHTML = "<i class=\"podrobnosti fa fa-info-circle\"></i>";
 	}
 
 }
 
-///// PRIKAZ SKRITIH VREDNOSTI /////
+///// SKRITI NAČIN /////
+// Prikaži/skrij vse
+function prikaziVse() {
+	prikazanoVse = !document.getElementById("prikaziVseC").checked;
+	init();
+}
 // Ko je miška nad celico
 function pokaziParam(id) {
 	if (!prikazanoVse) {
@@ -123,6 +129,22 @@ function skrijParam(id) {
 		var param = id.split("-")[0];
 		if (param !== "ime" && param !== "podrobnosti") {
 			celica.innerHTML = "";
+		}
+	}
+}
+function prikaziVrstico(id) {
+	if (!prikazanoVse) {
+		var celice = tabela.rows[parseInt(vrstniRed.indexOf(id))+1].cells;
+		for (elem in curLayout) {
+			celice[1+parseInt(elem)].innerHTML = data[id][curLayout[elem].koda];
+		}
+	}
+}
+function skrijVrstico(id) {
+	if (!prikazanoVse) {
+		var celice = tabela.rows[parseInt(vrstniRed.indexOf(id))+1].cells;
+		for (elem in curLayout) {
+			celice[1+parseInt(elem)].innerHTML = "";
 		}
 	}
 }
@@ -161,12 +183,6 @@ function info(n) {
 		odprtInfo = true;
 		odpriN(n);
 	}
-}
-///// SKRITI NAČIN /////
-// Prikaži/skrij vse
-function prikaziVse() {
-	prikazanoVse = document.getElementById("prikaziVseC").checked;
-	init();
 }
 
 ///// KONTROLERJI /////
