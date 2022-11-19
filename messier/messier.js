@@ -7,12 +7,15 @@ var kontrolerjiDiv = document.getElementById("kontrolerjiDiv");
 var sp = {
 	"iau": {"koda": "iau", "ime": "IAU", "sirina": 4},
 	"l_ozvezdje": {"koda": "l_ozvezdje", "ime": "L. ozvezdje", "sirina": 14},
-	"ozvezdje": {"koda": "ozvezdje", "ime": "Ozvezdje", "sirina": 13}
+	"ozvezdje": {"koda": "ozvezdje", "ime": "Ozvezdje", "sirina": 13},
+	"nav_mag": {"koda": "nav_mag", "ime": "Nav. mag.", "sirina": 2},
+	"tip": {"koda": "tip", "ime": "Tip", "sirina": 13},
+	"ngc": {"koda": "ngc", "ime": "NGC", "sirina": 4}
 };
 // Parametri v tabeli
 var curLayout = [sp.iau, sp.l_ozvezdje];
 // Parametri zunaj tabele
-var remLayout = [sp.ozvezdje];
+var remLayout = [sp.ozvezdje, sp.nav_mag, sp.tip, sp.ngc];
 // Vrstni red objektov
 var vrstniRed = [];
 for (var i = 0; i < 110; i++) {
@@ -133,7 +136,7 @@ function odpriN(n) {
 	odprtI = n;
 	var vrsta = tabela.insertRow(vrstniRed.indexOf(n)+2);
 	var celica = vrsta.insertCell(0);
-	celica.setAttribute("colspan", 4);
+	celica.setAttribute("colspan", 100);
 	var celicaBes = "<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" alt=\"Karta za M" + (n+1) + "\" class=\"finder_chart\" />";
 	celicaBes += "<img src=\"skice/s" + (n+1) + ".jpg\" alt=\"Skica od M" + (n+1) + "\" class=\"skica\" />";
 	celica.innerHTML = celicaBes;
