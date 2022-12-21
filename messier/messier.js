@@ -3,19 +3,11 @@
 var tabela = document.getElementById("tabela");
 var kontrolerjiB = document.getElementById("kontrolerjiB");
 var kontrolerjiDiv = document.getElementById("kontrolerjiDiv");
-// Specifikacije parametrov
-var sp = {
-	"iau": {"koda": "iau", "ime": "IAU", "sirina": 4},
-	"l_ozvezdje": {"koda": "l_ozvezdje", "ime": "L. ozvezdje", "sirina": 14},
-	"ozvezdje": {"koda": "ozvezdje", "ime": "Ozvezdje", "sirina": 13},
-	"nav_mag": {"koda": "nav_mag", "ime": "Nav. mag.", "sirina": 2},
-	"tip": {"koda": "tip", "ime": "Tip", "sirina": 13},
-	"ngc": {"koda": "ngc", "ime": "NGC", "sirina": 4}
-};
+
 // Parametri v tabeli
 var curLayout = [sp.iau, sp.l_ozvezdje];
 // Parametri zunaj tabele
-var remLayout = [sp.ozvezdje, sp.nav_mag, sp.tip, sp.ngc];
+var remLayout = [sp.ozvezdje, sp.nav_mag, sp.tip, sp.tezavnost, sp.ngc];
 // Vrstni red objektov
 var vrstniRed = [];
 for (var i = 0; i < 110; i++) {
@@ -68,7 +60,7 @@ function init() {
 	// Glava tabele
 	var headString = "<thead><tr><th id=\"ime-h\" style=\"width: 2ch;\">#</th>";
 	for (const elem in curLayout) {
-		headString += "<th id=\"" + curLayout[elem].koda + "-h\" style=\"width:" + curLayout[elem].sirina + "ch;\">";
+		headString += "<th title=\"" + curLayout[elem].title + "\" id=\"" + curLayout[elem].koda + "-h\" style=\"width:" + curLayout[elem].sirina + "ch;\">";
 		if (kontrolerji) {
 			headString += "<i class=\"fa fa-arrow-left\" onclick=\"kontrolerLevo(this)\" id=\"" + curLayout[elem].koda + "-l\"></i><br />";
 		}
@@ -103,7 +95,6 @@ function init() {
 		podrobnosti.setAttribute("onclick", "info(" + elem + ")");
 		podrobnosti.innerHTML = "<i class=\"podrobnosti fa fa-info-circle\"></i>";
 	}
-
 }
 
 ///// SKRITI NAČIN /////
@@ -258,14 +249,7 @@ function razvrsti() {
 }
 // Maratonski vrstni red
 function vrstniRedMaraton() {
-	vrstniRed = [
-		76, 73, 32, 30, 31, 109, 51, 102, 75, 33, 44, 78, 41, 42, 77, 0, 34, 36, 35, 37,
-		40, 92, 46, 45, 49, 47, 43, 66, 94, 95, 104, 64, 65, 80, 81, 96, 107, 108, 39, 105,
-		93, 62, 50, 100, 101, 52, 63, 2, 97, 98, 99, 84, 83, 85, 86, 88, 89, 87, 90, 57,
-		58, 59, 48, 60, 103, 67, 82, 4, 12, 91, 56, 55, 28, 38, 26, 70, 106, 9, 11, 13,
-		8, 3, 79, 18, 61, 5, 6, 10, 25, 15, 16, 17, 23, 24, 22, 20, 19, 7, 27, 21,
-		68, 69, 53, 54, 74, 14, 1, 71, 72, 29
-	];
+	vrstniRed = maratonVrstniRed;
 	init();
 }
 
