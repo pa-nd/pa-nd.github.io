@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="sl" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>Odvečne zvezde</title>
+    <link rel="icon" type="image/x-icon" href="../iss_logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body onload="onReload()">
+    <a id="domov" href="../">
+      <i class="fa fa-home"></i>
+    </a>
+    <h1>Odvečne zvezde</h1>
+    <p>3 zvezde so odveč. Najdi jih! Nebo in odvečne zvezde se ob vsaki osvežitvi strani spremenijo.</p>
+    <button onclick="show()" id="btn">Pokaži rešitev</button>
+    <br />
+    <div id="outsideWrapper">
+      <div id="insideWrapper">
+        <iframe id="ifr" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowTransparency="true"></iframe>
+        <canvas id="canv" height="500" width="800"></canvas>
+      </div>
+    </div>
+    <p>Vnesi želene magnitude odvečnih zvezd:</p>
+    <div id="glasbeneZeljeDiv">
+
+    </div>
+    <p><i>Zgoraj vnešene magnitude so zgolj okvirne.</i></p>
+    <button onclick="onReload()">Ponovni izriši!</button>
+    <br/><br/>
+    <label for="showConstellations">Prikaži ozvezdja:</label> <input type="checkbox" onchange="showConstellations()" id="showConstellations"></input>
+    <script src="scripts.js"></script>
+  </body>
+</html>

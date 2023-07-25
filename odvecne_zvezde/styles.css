@@ -1,0 +1,67 @@
+button {
+  background-color: #222222;
+  border: none;
+  padding: 8px 20px;
+  text-align: center;
+  display: inline-block;
+  color: white;
+  font-weight: bolder;
+  font-size: 1em;
+  border-radius: 10px;
+  margin: 0px 10px;
+}
+
+button:hover {
+  background-color: #555555;
+}
+
+button:active {
+  background-color: #777777;
+}
+
+#outsideWrapper {
+  width: 800px;
+  height: 500px;
+  margin: 20px 60px;
+}
+
+#insideWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#ifr {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#canv {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.glasbeneInput {
+  border-radius: 10px;
+  text-align: center;
+}
+#dodajGlasbene {
+  background-color: green;
+}
+#dodajGlasbene:hover {
+  background-color: rgb(50, 200, 50);
+}
+#dodajGlasbene:active {
+  background-color: rgb(140, 200, 50);
+}
+#odstraniGlasbene {
+  background-color: red;
+}
+#odstraniGlasbene:hover {
+  background-color: rgb(212, 18, 4);
+}
+#odstraniGlasbene:active {
+  background-color: rgb(230, 140, 100);
+}
