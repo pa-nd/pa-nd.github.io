@@ -20,9 +20,11 @@ button:active {
 }
 
 #outsideWrapper {
+  position: relative;
   width: 800px;
   height: 500px;
-  margin: 20px 60px;
+  margin: auto;
+  border: 3px solid black;
 }
 
 #insideWrapper {
@@ -46,6 +48,20 @@ button:active {
 .glasbeneInput {
   border-radius: 10px;
   text-align: center;
+  width: 40px;
+}
+#ponovnoIzrisiBtn {
+  background-color: #273382;
+}
+#ponovnoIzrisiBtn:hover {
+  background-color: #5b68bd;
+}
+#ponovnoIzrisiBtn:active {
+  background-color: #5b9bbd;
+}
+#dodajGlasbene, #odstraniGlasbene {
+  margin: 10px;
+  padding: 10px 15px;
 }
 #dodajGlasbene {
   background-color: green;

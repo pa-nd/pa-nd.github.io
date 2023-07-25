@@ -4,11 +4,19 @@ var u_lat = 14.7;
 var u_az = 0.0;
 var u_scale = 1.2;
 var shown = false;
-var N = 3;
 var constellations = false;
 var max_r = 8;
 
-var glasbene = [0.0, 1.5, 3.0];
+var glasbene = [];
+if (sessionStorage.getItem("glasbene") == null) {
+  glasbene = [0.0, 1.5, 3.0];
+} else {
+  glasbene = JSON.parse(sessionStorage.getItem("glasbene"));
+}
+function saveGlasbene_toSesStor() {
+  sessionStorage.setItem("glasbene", JSON.stringify(glasbene));
+}
+
 function mag_to_r(mag) {
   return Math.E**((1.6 - mag)/5.0) * 3 / 1.2 * u_scale;
 }
@@ -20,6 +28,7 @@ const canvas = g("canv");
 const ctx = canvas.getContext("2d");
 const iframe = g("ifr");
 const button = g("btn");
+const navodilaP = g("navodilaP");
 const showConstellations_btn = g("showConstellations");
 var glasbeneZeljeDiv = g("glasbeneZeljeDiv");
 
@@ -39,10 +48,11 @@ function onReload() {
   "&negative=" + u_neg +
   "&constellations=" + constellations +
   "&showplanets=false&showplanetlabels=false&showdate=false&showposition=false&magnitude=6";
-  ifr.setAttribute("src", URL);
+
+  iframe.setAttribute("src", URL);
   iframe.onload = function(){
   ctx.fillStyle = "black";
-  for (var i = 0; i < N; i++) {
+  for (var i = 0; i < glasbene.length; i++) {
     ctx.beginPath();
     var rand1 = Math.floor(Math.random() * (canvas.width-16) + 8);
     var rand2 = Math.floor(Math.random() * (canvas.height-16) + 8);
@@ -52,6 +62,19 @@ function onReload() {
     ctx.arc(rand1, rand2, zvezda.r, 0, 2 * Math.PI);
     ctx.fill();
   }
+  iframe.onload = 0;
+  // Update navodila
+  var appT;
+  if (glasbene.length == 1) {
+    appT = "1 zvezda je odveč. Najdi jo!";
+  } else if (glasbene.length == 2) {
+    appT = "2 zvezdi sta odveč. Najdi ju!";
+  } else if (glasbene.length == 3 || glasbene.length == 4) {
+    appT = "" + glasbene.length + " zvezde so odveč. Najdi jih!";
+  } else {
+    appT = "" + glasbene.length + " zvezd je odveč. Najdi jih!";
+  }
+  navodilaP.innerHTML = appT + " Nebo in odvečne zvezde se ob vsaki osvežitvi strani spremenijo.";
   shown = false;
 };
 };
@@ -80,6 +103,7 @@ function show() {
   }
 };
 function showWithoutReload() {
+  alert("a");
   var URL =
   "https://virtualsky.lco.global/embed/index.html?cardinalpoints=false&az=" + u_az +
   "&longitude=" + u_lon +
@@ -88,7 +112,7 @@ function showWithoutReload() {
   "&negative=" + u_neg +
   "&constellations=" + constellations +
   "&showplanets=false&showplanetlabels=false&showdate=false&showposition=false&magnitude=6";
-  ifr.setAttribute("src", URL);
+  iframe.setAttribute("src", URL);
 }
 
 function reloadGlasbene() {
@@ -96,30 +120,30 @@ function reloadGlasbene() {
   for (const el of glasbene) {
     glasbeneZeljeDiv.innerHTML += '<input class="glasbeneInput" onchange="changeGlasbene()" type="number" min="-1.5" max="4.5" step="0.1" value="' + el + '" />';
   }
-  glasbeneZeljeDiv.innerHTML += '<button id="dodajGlasbene" onclick="dodajGlasbene()">+</button><button id="odstraniGlasbene" onclick="odstraniGlasbene()">-</button>';
+  glasbeneZeljeDiv.innerHTML += '<br/><button id="dodajGlasbene" onclick="dodajGlasbene()">+</button><button id="odstraniGlasbene" onclick="odstraniGlasbene()">-</button>';
 }
 reloadGlasbene();
 function dodajGlasbene() {
-  if (N < 10) {
+  if (glasbene.length < 10) {
     glasbene.push(0.0);
-    N++;
     reloadGlasbene();
   }
+  saveGlasbene_toSesStor();
 }
 function odstraniGlasbene() {
-  if (N > 1) {
+  if (glasbene.length > 1) {
     glasbene.pop();
-    N--;
     reloadGlasbene();
   }
+  saveGlasbene_toSesStor();
 }
 function changeGlasbene() {
   glasbene = [];
   var arr = document.getElementsByClassName("glasbeneInput");
   for (const el of arr) {
-    glasbene.push(parseInt(el.value));
+    glasbene.push(parseFloat(el.value));
   }
-  console.log(glasbene);
+  saveGlasbene_toSesStor();
 }
 function showConstellations() {
   constellations = showConstellations_btn.checked;

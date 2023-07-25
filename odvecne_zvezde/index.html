@@ -14,7 +14,7 @@
       <i class="fa fa-home"></i>
     </a>
     <h1>Odvečne zvezde</h1>
-    <p>3 zvezde so odveč. Najdi jih! Nebo in odvečne zvezde se ob vsaki osvežitvi strani spremenijo.</p>
+    <p id="navodilaP"></p>
     <button onclick="show()" id="btn">Pokaži rešitev</button>
     <br />
     <div id="outsideWrapper">
@@ -24,13 +24,12 @@
       </div>
     </div>
     <p>Vnesi želene magnitude odvečnih zvezd:</p>
+    <button onclick="onReload()" id="ponovnoIzrisiBtn" title="Ponovno izriši z novo izbiro magnitud">Ponovni izriši!</button>
     <div id="glasbeneZeljeDiv">
-
     </div>
     <p><i>Zgoraj vnešene magnitude so zgolj okvirne.</i></p>
-    <button onclick="onReload()">Ponovni izriši!</button>
-    <br/><br/>
     <label for="showConstellations">Prikaži ozvezdja:</label> <input type="checkbox" onchange="showConstellations()" id="showConstellations"></input>
+    <p>Spletna stran je namenjena za prikaz na dovolj širokem zaslonu, kot je recimo računalnik ali tablica, saj se v nasprotnem primeru zvezde ne bi dovolj dobro videle. Sicer pa stran dobro funkcionira tudi na manjših zaslonih (telefonu itd.).</p>
     <script src="scripts.js"></script>
   </body>
 </html>
