@@ -90,13 +90,13 @@ function drawStars(color="black", const_r=0) {
     }
 }
 
-function updateNavodila() {
+function updateNavodila(len) {
     var appT;
-    if (glasbene.length == 1) {
+    if (len == 1) {
         appT = "1 zvezda je odveč. Najdi jo!";
-    } else if (glasbene.length == 2) {
+    } else if (len == 2) {
         appT = "2 zvezdi sta odveč. Najdi ju!";
-    } else if (glasbene.length == 3 || glasbene.length == 4) {
+    } else if (len == 3 || len == 4) {
         appT = "" + glasbene.length + " zvezde so odveč. Najdi jih!";
     } else {
         appT = "" + glasbene.length + " zvezd je odveč. Najdi jih!";
@@ -140,7 +140,7 @@ function onReload() {
             zvezda_arr.push(zvezda);
         }
         drawStars();
-        updateNavodila();
+        updateNavodila(len);
         iframe.onload = 0;
 
         // Stalen link
