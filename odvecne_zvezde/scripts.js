@@ -64,7 +64,7 @@ function getURL() {
         "&gradient=false&projection=stereo&mouse=false&keyboard=false&scalestars=" + u_scale +
         "&negative=" + u_neg +
         "&constellations=" + constellations +
-        "&showplanets=false&showplanetlabels=false&showdate=false&showposition=false&magnitude=6");
+        "&clock=Jan%2001%202020%2001:00:00&showplanets=false&showplanetlabels=false&showdate=false&showposition=false&magnitude=6");
 }
 
 function drawStars(color="black", const_r=0) {
