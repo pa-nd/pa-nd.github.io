@@ -97,9 +97,9 @@ function updateNavodila(len) {
     } else if (len == 2) {
         appT = "2 zvezdi sta odveč. Najdi ju!";
     } else if (len == 3 || len == 4) {
-        appT = "" + glasbene.length + " zvezde so odveč. Najdi jih!";
+        appT = "" + len + " zvezde so odveč. Najdi jih!";
     } else {
-        appT = "" + glasbene.length + " zvezd je odveč. Najdi jih!";
+        appT = "" + len + " zvezd je odveč. Najdi jih!";
     }
     navodilaP.innerHTML = appT + " Nebo in odvečne zvezde se ob vsaki osvežitvi strani spremenijo.";
 }
@@ -154,6 +154,7 @@ function onReload() {
           g("permLink").href = sentUrl;
         */
         shown = false;
+        button.innerHTML = "Pokaži rešitev";
     };
 };
 
