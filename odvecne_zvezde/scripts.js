@@ -134,7 +134,7 @@ function onReload() {
             if (nakljucneMagnitude_bool) {
                 const nakljucneInput = g("nakljucneInput");
                 if (nakljucneInput.value) {
-                  zvezda.r = mag_to_r(Math.random() * 6 - 1.5);
+                  zvezda.r = mag_to_r(Math.random() * 3.5 + 1.0);
                 }
             }
             zvezda_arr.push(zvezda);
