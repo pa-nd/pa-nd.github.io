@@ -1,10 +1,16 @@
+// Get Element by Id
+function g(id) {
+	return document.getElementById(id);
+}
+
 ///// INICIALIZACIJA PODATKOV /////
 // var data je definiran v data.js
-var tabela = document.getElementById("tabela");
-var kontrolerjiB = document.getElementById("kontrolerjiB");
-var kontrolerjiDiv = document.getElementById("kontrolerjiDiv");
+var tabela = g("tabela");
+var kontrolGumb = g("kontrolGumb");
+var kontrolDiv = g("kontrolDiv");
+var kontrolNavodila = g("kontrolNavodila");
 
-// Parametri v tabeli
+// Parametri v tabeli, sp = specifikacije parametrov
 var curLayout = [sp.iau, sp.l_ozvezdje];
 // Parametri zunaj tabele
 var remLayout = [sp.ozvezdje, sp.nav_mag, sp.tip, sp.tezavnost, sp.ngc];
@@ -25,7 +31,7 @@ var kontrolerji = false;
 ///// POSTAVITEV TABELE //////
 // Dodaj celico
 // vrsta, številka vrstice, zap. št. objekta, kodno ime
-function dCel(vrsta, i, n, ime) {
+function dodajCelico(vrsta, i, n, ime) {
 	var celica = vrsta.insertCell(i);
 	celica.className = ime;
 	celica.id = ime + "-" + n;
@@ -36,25 +42,23 @@ function dCel(vrsta, i, n, ime) {
 
 // Funkcija, ki se sproži ob vsaki posodobitvi
 function init() {
-	kontrolerji = kontrolerjiB.checked;
+	kontrolerji = kontrolGumb.checked;
 
 	// Nastavi kontrolerski div
 	if (kontrolerji) {
-		document.getElementById("navodilaKontrolerji").style.display = "inline";
+		kontrolNavodila.style.display = "inline";
+		kontrolDiv.style.display = "block";
 	}
 	else {
-		document.getElementById("navodilaKontrolerji").style.display = "none";
+		kontrolNavodila.style.display = "none";
+		kontrolDiv.style.display = "none";
 	}
-	if (kontrolerji) {
-		kontrolerjiDiv.style.display = "block";
-	}
-	else {
-		kontrolerjiDiv.style.display = "none";
-	}
-	kontrolerjiDiv.innerHTML = "";
+
+	kontrolDiv.innerHTML = "";
 	// Prikaži gumbe v kontrolerskem divu
 	for (el in remLayout) {
-		kontrolerjiDiv.innerHTML += "<button id=\"" + remLayout[el].koda + "-r\" onclick=\"kontrolerDodaj(this)\">" + remLayout[el].ime + "</button>";
+		// Primer: <button id="abc-r" onclick="kontrolerDodaj(this)"> tekst </button>
+		kontrolDiv.innerHTML += "<button id=\"" + remLayout[el].koda + "-r\" onclick=\"kontrolerDodaj(this)\">" + remLayout[el].ime + "</button>";
 	}
 
 	// Glava tabele
@@ -74,26 +78,28 @@ function init() {
 	tabela.innerHTML = headString;
 
 	// Za vsako vrstico, vnesi celice
-	for (var j = 0; j < 110; j++) {
+	for (var j = 0; j < vrstniRed.length; j++) {
 		var elem = vrstniRed[j];
 		var vrsta = tabela.insertRow(j+1);
+		vrsta.id = "vrsta-" + elem;
 
-		var ime = dCel(vrsta, 0, elem, "ime");
+		var ime = dodajCelico(vrsta, 0, elem, "ime");
 		ime.innerHTML = "M" + (elem+1);
 		ime.setAttribute("onmouseover", "prikaziVrstico(" + elem + ")");
 		ime.setAttribute("onmouseout", "skrijVrstico(" + elem + ")");
 		// Za vsak izbran parameter ...
 		for (const eleme in curLayout) {
-			var celica = dCel(vrsta, parseInt(eleme)+1, elem, curLayout[eleme].koda);
+			var celica = dodajCelico(vrsta, parseInt(eleme)+1, elem, curLayout[eleme].koda);
 			// Če ni skriti način, prikaži vse vrednosti
 			if (prikazanoVse) {
 				celica.innerHTML = data[elem][curLayout[eleme].koda];
 			}
 		}
-		var podrobnosti = dCel(vrsta, curLayout.length + 1, elem, "podrobnosti");
+		var podrobnosti = dodajCelico(vrsta, curLayout.length + 1, elem, "podrobnosti");
 		podrobnosti.className = "infoTd";
 		podrobnosti.setAttribute("onclick", "info(" + elem + ")");
 		podrobnosti.innerHTML = "<i class=\"podrobnosti fa fa-info-circle\"></i>";
+		odprtInfo = false;
 	}
 }
 
@@ -141,38 +147,27 @@ function skrijVrstico(id) {
 }
 
 ///// PRIKAZ PODROBNOSTI /////
-var odprtInfo = false;
-var odprtI = -1;
-
-// Odpri okno s podrobnostmi
-function odpriN(n) {
-	odprtI = n;
-	var vrsta = tabela.insertRow(vrstniRed.indexOf(n)+2);
-	var celica = vrsta.insertCell(0);
-	celica.setAttribute("colspan", 100);
-	var celicaBes = "<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" alt=\"Karta za M" + (n+1) + "\" class=\"finder_chart\" />";
-	celicaBes += "<img src=\"skice/s" + (n+1) + ".jpg\" alt=\"Skica od M" + (n+1) + "\" class=\"skica\" />";
-	celica.innerHTML = celicaBes;
-}
 
 // Ko kliknem na info ...
 function info(n) {
-	// Če je že odprt, ga zapri in odpri novega ...
-	if (odprtInfo) {
-		tabela.deleteRow(vrstniRed.indexOf(odprtI)+2);
-		// ... razen če je oseba kliknila istega
-		if (odprtI === n) {
-			odprtInfo = false;
-			odprtI = -1;
-		}
-		else {
-			odpriN(n);
-		}
+	var modal = g("infoModal");
+
+	var span = document.getElementsByClassName("close")[0];
+
+	var celicaBes = "<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" alt=\"Karta za M" + (n+1) + "\" class=\"finder_chart\" />";
+	celicaBes += "<img src=\"skice/s" + (n+1) + ".jpg\" alt=\"Skica od M" + (n+1) + "\" class=\"skica\" />";
+	g("modalInhalt").innerHTML = celicaBes;
+
+	modal.style.display = "block";
+
+	span.onclick = function() {
+	  modal.style.display = "none";
 	}
-	// Sicer odpri
-	else {
-		odprtInfo = true;
-		odpriN(n);
+
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
 	}
 }
 
