@@ -92,14 +92,6 @@ button {
   margin: 5px 0px;
 }
 
-.napisHeader:hover {
-  background-color: #bb3333;
-}
-
-.napisHeader:active {
-  background-color: #cc3333;
-}
-
 button:hover {
   background-color: #555555;
 }

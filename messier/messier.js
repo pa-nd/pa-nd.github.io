@@ -62,20 +62,40 @@ function init() {
 	}
 
 	// Glava tabele
-	var headString = "<thead><tr><th id=\"ime-h\" style=\"width: 2ch;\">#</th>";
+	var headString = "";
+
+	if (kontrolerji)
+	{
+		headString += `<style>
+		.napisHeader:hover {
+		  background-color: #bb3333;
+		}
+
+		.napisHeader:active {
+		  background-color: #cc3333;
+		}
+	</style>`;
+	}
+	
+	headString += "<thead><tr><th id=\"ime-h\" style=\"width: 2ch;\">#</th>";
 	for (const elem in curLayout) {
 		headString += "<th title=\"" + curLayout[elem].title + "\" id=\"" + curLayout[elem].koda + "-h\" style=\"width:" + curLayout[elem].sirina + "ch;\">";
+
 		if (kontrolerji) {
 			headString += "<i class=\"fa fa-arrow-left\" onclick=\"kontrolerLevo(this)\" id=\"" + curLayout[elem].koda + "-l\"></i><br />";
 		}
+
 		headString += "<span id=\"" + curLayout[elem].koda + "-z\" class=\"napisHeader\" onclick=\"kontrolerOdstrani(this)\">" + curLayout[elem].ime + "</span>";
+
 		if (kontrolerji) {
 			headString += "<br /><i class=\"fa fa-arrow-right\" onclick=\"kontrolerDesno(this)\" id=\"" + curLayout[elem].koda + "-d\"></i>";
 		}
+
 		headString += "</th>";
 	}
 	headString += "<th id=\"podrobnosti-h\">Info</th></tr></thead>";
 	tabela.innerHTML = headString;
+
 
 	// Za vsako vrstico, vnesi celice
 	for (var j = 0; j < vrstniRed.length; j++) {
@@ -99,7 +119,6 @@ function init() {
 		podrobnosti.className = "infoTd";
 		podrobnosti.setAttribute("onclick", "info(" + elem + ")");
 		podrobnosti.innerHTML = "<i class=\"podrobnosti fa fa-info-circle\"></i>";
-		odprtInfo = false;
 	}
 }
 
