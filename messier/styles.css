@@ -2,7 +2,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 #tabela,
 td,
 tr,
@@ -113,7 +112,7 @@ button:active {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 1001;
   left: 0;
   top: 0;
   width: 100%;
