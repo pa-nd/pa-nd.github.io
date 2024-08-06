@@ -19,10 +19,27 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- TELO -->
-    <a id="domov" href="../">
-      <i class="fa fa-home"></i>
-    </a>
+    <ul class="navigationUl">
+      <li>
+            <a href="../">
+              <i class="fa fa-home"></i>
+            </a>
+      </li>
+      <li>
+        <a class="active" href="../messier">Messier</a>
+      </li>
+      <li>
+        <a href="../odvecne_zvezde">Zvezde</a>
+      </li>
+      <li>
+        <a href="../paralaksa">Paralaksa</a>
+      </li>
+      <li>
+        <a href="../uporabne_povezave">Povezave</a>
+      </li>
+    </ul>
+
+    <div class="main">
     <h1>Tabela Messierjevih objektov</h1>
     <p><a href="#navodila">Navodila za uporabo</a></p>
     <hr />
@@ -94,7 +111,10 @@
       parametrov se ta doda v tabelo. Določen stolpec se lahko s puščicama
       premakne levo ali desno. S klikom na ime stolpca se ta izbriše.
     </p>
+    <hr />
+    <br />
     <script src="data.js"></script>
     <script src="messier.js"></script>
+  </div>
   </body>
 </html>

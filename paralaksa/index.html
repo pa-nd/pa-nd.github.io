@@ -12,7 +12,7 @@
   </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <title>Paralaksa</title>
+    <title>Uporabne povezave</title>
     <link rel="icon" type="image/x-icon" href="../iss_logo.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../global.css" />
@@ -20,9 +20,27 @@
     <script src="script.js"></script>
   </head>
   <body onload="izracunajVisino()">
-    <a id="domov" href="../">
-      <i class="fa fa-home"></i>
-    </a>
+    <ul class="navigationUl">
+      <li>
+            <a href="../">
+              <i class="fa fa-home"></i>
+            </a>
+      </li>
+      <li>
+        <a href="../messier">Messier</a>
+      </li>
+      <li>
+        <a href="../odvecne_zvezde">Zvezde</a>
+      </li>
+      <li>
+        <a class="active" href="../paralaksa">Paralaksa</a>
+      </li>
+      <li>
+        <a href="../uporabne_povezave">Povezave</a>
+      </li>
+    </ul>
+
+    <div class="main">
     <h1>Paralaksa</h1>
     <p><em>Tukaj le iz zgodovinskih razlogov : )</em></p>
     <button onclick="izbrisiVse()">Izbriši vse</button>
@@ -154,5 +172,6 @@
     <p id="RResult"></p>
     <p id="HResult"></p>
     <hr />
+  </div>
   </body>
 </html>

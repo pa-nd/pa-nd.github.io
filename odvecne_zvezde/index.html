@@ -19,9 +19,26 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body onload="onReload()">
-    <a id="domov" href="../">
-      <i class="fa fa-home"></i>
-    </a>
+    <ul class="navigationUl">
+      <li>
+            <a href="../">
+              <i class="fa fa-home"></i>
+            </a>
+      </li>
+      <li>
+        <a href="../messier">Messier</a>
+      </li>
+      <li>
+        <a class="active" href="../odvecne_zvezde">Zvezde</a>
+      </li>
+      <li>
+        <a href="../paralaksa">Paralaksa</a>
+      </li>
+      <li>
+        <a href="../uporabne_povezave">Povezave</a>
+      </li>
+    </ul>
+    <div class="main">
     <h1>Odvečne zvezde</h1>
     <p id="navodilaP"></p>
     <p>Klikni na odvečno zvezdo, da se obarva zeleno. Če zvezda ni odvečna, se ne bo pobarvala.</p>
@@ -45,5 +62,6 @@
     <p>Navdih za ta kviz izvira iz tega, da se na olimpijadi dostikrat pojavi naloga podobnega tipa (recimo, poišči 3 odvečne in 2 manjkajoči zvezdi).</p>
     <!--<p><a id="permLink"><u>Stalen link do tega pogleda neba.</u></a></p>-->
     <script src="scripts.js"></script>
+  </div>
   </body>
 </html>
