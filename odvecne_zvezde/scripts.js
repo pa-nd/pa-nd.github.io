@@ -36,6 +36,7 @@ var number_guesses = 0;
 /////////// INICIALIZIRAJ, ČE OBSTAJAJO GLASBENE IZ PREJŠNJEGA OBISKA
 if (sessionStorage.getItem("glasbene") != null) {
   data = sessionStorage.getItem("glasbene");
+  glasbene = JSON.parse(data.slice(1));
   if (data[0] == "1") {
     nakljucneMagnitude_btn.checked = true;
     nakljucneMagnitude(nakljucneMagnitude_btn);
@@ -45,8 +46,10 @@ if (sessionStorage.getItem("glasbene") != null) {
     nakljucneMagnitude_btn.checked = false;
     reloadGlasbene();
   }
-  glasbene = JSON.parse(data.slice(1));
+} else {
+  reloadGlasbene();
 }
+
 function saveGlasbene_toSesStor() {
   if (nakljucneMagnitude_btn.checked) {
       sessionStorage.setItem("glasbene", "1" + JSON.stringify(glasbene));
@@ -77,7 +80,6 @@ function checkStars(evt) {
         var dist = Math.sqrt((x - el.x) ** 2 + (y - el.y) ** 2);
         if (dist <= allowed_r) {
             el.found = true;
-            audio_correct.play();
             something_found = true;
         }
     }
@@ -96,15 +98,32 @@ function checkStars(evt) {
   if (all_found) {
     btn_resitev.innerHTML = skrij_text;
     btn_resitev.style.display = "none";
-    setTimeout(function(){
       var audio_end = new Audio("end.wav");
       audio_end.play();
-      setTimeout(function(){
-        alert("Čestitke! Našel si vse zvezde v " + number_guesses + " poskusih!");
-      }, 1500);
+      var modal = g("infoModal");
+    	var span = document.getElementsByClassName("close")[0];
+    	var celicaBes = "Čestitke! Našel si vse zvezde v " + number_guesses + " poskus";
+      if (number_guesses == 1)
+        celicaBes += "u!";
+      else
+        celicaBes += "ih!";
+      g("modalInhalt").innerHTML = celicaBes;
+    	modal.style.display = "block";
+    	span.onclick = function() {
+    	  modal.style.display = "none";
+    	}
+    	window.onclick = function(event) {
+    	  if (event.target == modal) {
+    	    modal.style.display = "none";
+    	  }
+    	}
 
-    }, 1500);
+  } else {
+    if (something_found)
+      audio_correct.play();
   }
+
+
 }
 
 }
