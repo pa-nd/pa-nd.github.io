@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="../global.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body onload="onReload()">
+  <body onload="restart()">
+
+    <!-- NAVIGACIJA -->
     <ul class="navigationUl">
       <li>
             <a href="../">
@@ -38,11 +40,13 @@
         <a href="../uporabne_povezave">Povezave</a>
       </li>
     </ul>
+
+    <!-- MAIN -->
     <div class="main">
     <h1>Odvečne zvezde</h1>
     <p id="navodilaP"></p>
     <p>Klikni na odvečno zvezdo, da se obarva zeleno. Če zvezda ni odvečna, se ne bo pobarvala.</p>
-    <button onclick="show()" id="btn">Pokaži rešitev</button>
+    <button onclick="showSolution()" id="btn_resitev"></button>
     <br />
     <div id="outsideWrapper">
       <div id="insideWrapper">
@@ -50,7 +54,7 @@
         <canvas id="canv" height="500" width="800"></canvas>
       </div>
     </div>
-    <button onclick="onReload()" id="ponovnoIzrisiBtn">Ponovni izriši!</button>
+    <button onclick="restart()" id="ponovnoIzrisiBtn">Ponovni izriši!</button>
     <br />
     <label for="nakljucneMagnitude">Naključne magnitude:</label> <input type="checkbox" onchange="nakljucneMagnitude(this)" id="nakljucneMagnitude"></input>
     <div id="glasbeneZeljeDiv">
@@ -59,7 +63,7 @@
     <label for="showConstellations">Prikaži ozvezdja:</label> <input type="checkbox" onchange="showConstellations()" id="showConstellations"></input>
     <hr />
     <p>Spletna stran je namenjena za prikaz na dovolj širokem zaslonu (računalnik, tablica), saj se v nasprotnem primeru zvezde ne bi dovolj dobro videle, sicer pa stran dobro funkcionira tudi na manjših zaslonih (telefonu).</p>
-    <p>Navdih za ta kviz izvira iz tega, da se na olimpijadi dostikrat pojavi naloga podobnega tipa (recimo, poišči 3 odvečne in 2 manjkajoči zvezdi).</p>
+    <p>S kvizom se učinkovito nauči in zapomni mnoga ozvezdja severnega in južnega neba. Z aktivnim iskanjem zvezd se namreč najbolje prepozna poznavanje oz. nepoznavanje nočnega neba. Navdih za ta kviz izvira iz tega, da se na olimpijadi dostikrat pojavi naloga podobnega tipa (recimo, poišči 3 odvečne in 2 manjkajoči zvezdi).</p>
     <!--<p><a id="permLink"><u>Stalen link do tega pogleda neba.</u></a></p>-->
     <script src="scripts.js"></script>
   </div>
