@@ -26,7 +26,7 @@ const nakljucneMagnitude_btn = g("nakljucneMagnitude");
 var glasbeneZeljeDiv = g("glasbeneZeljeDiv");
 
 // Seznam želenih magnitud
-  // default magnitude
+// default magnitude
 glasbene = [0.0, 1.5, 3.0];
 
 var zvezda_arr = [];
@@ -35,28 +35,27 @@ var number_guesses = 0;
 
 /////////// INICIALIZIRAJ, ČE OBSTAJAJO GLASBENE IZ PREJŠNJEGA OBISKA
 if (sessionStorage.getItem("glasbene") != null) {
-  data = sessionStorage.getItem("glasbene");
-  glasbene = JSON.parse(data.slice(1));
-  if (data[0] == "1") {
-    nakljucneMagnitude_btn.checked = true;
-    nakljucneMagnitude(nakljucneMagnitude_btn);
-    nakljucneInput.value = 3;
+    data = sessionStorage.getItem("glasbene");
+    glasbene = JSON.parse(data.slice(1));
+    if (data[0] == "1") {
+        nakljucneMagnitude_btn.checked = true;
+        nakljucneMagnitude(nakljucneMagnitude_btn);
+        nakljucneInput.value = 3;
 
-  } else {
-    nakljucneMagnitude_btn.checked = false;
-    reloadGlasbene();
-  }
+    } else {
+        nakljucneMagnitude_btn.checked = false;
+        reloadGlasbene();
+    }
 } else {
-  reloadGlasbene();
+    reloadGlasbene();
 }
 
 function saveGlasbene_toSesStor() {
-  if (nakljucneMagnitude_btn.checked) {
-      sessionStorage.setItem("glasbene", "1" + JSON.stringify(glasbene));
-  }
-  else {
-    sessionStorage.setItem("glasbene", "0" + JSON.stringify(glasbene));
-  }
+    if (nakljucneMagnitude_btn.checked) {
+        sessionStorage.setItem("glasbene", "1" + JSON.stringify(glasbene));
+    } else {
+        sessionStorage.setItem("glasbene", "0" + JSON.stringify(glasbene));
+    }
 }
 
 // Preračun magnitude v radij zvezde
@@ -66,65 +65,65 @@ function mag_to_r(mag) {
 
 // Ob kliku: označi pravilne zvezde
 function checkStars(evt) {
-  if (btn_resitev.innerHTML == pokazi_text) {
-    var rect = canvas.getBoundingClientRect(),
-        scaleX = canvas.width / rect.width,
-        scaleY = canvas.height / rect.height;
-    var x = (evt.clientX - rect.left) * scaleX;
-    var y = (evt.clientY - rect.top) * scaleY;
+    if (btn_resitev.innerHTML == pokazi_text) {
+        var rect = canvas.getBoundingClientRect(),
+            scaleX = canvas.width / rect.width,
+            scaleY = canvas.height / rect.height;
+        var x = (evt.clientX - rect.left) * scaleX;
+        var y = (evt.clientY - rect.top) * scaleY;
 
-    const audio_correct = new Audio("correct.wav");
-    const audio_false = new Audio("false.wav");
-    var something_found = false;
-    for (const el of zvezda_arr) {
-        var dist = Math.sqrt((x - el.x) ** 2 + (y - el.y) ** 2);
-        if (dist <= allowed_r) {
-            el.found = true;
-            something_found = true;
+        const audio_correct = new Audio("correct.wav");
+        const audio_false = new Audio("false.wav");
+        var something_found = false;
+        for (const el of zvezda_arr) {
+            var dist = Math.sqrt((x - el.x) ** 2 + (y - el.y) ** 2);
+            if (dist <= allowed_r) {
+                el.found = true;
+                something_found = true;
+            }
         }
+        if (!something_found)
+            audio_false.play();
+        drawStars();
+
+        number_guesses++;
+
+        // preveri, če je našel vse
+        var all_found = true;
+        for (const el of zvezda_arr) {
+            if (!(el.found))
+                all_found = false;
+        }
+        if (all_found) {
+            btn_resitev.innerHTML = skrij_text;
+            btn_resitev.style.display = "none";
+            var audio_end = new Audio("end.wav");
+            audio_end.play();
+            var modal = g("infoModal");
+            var span = document.getElementsByClassName("close")[0];
+            var celicaBes = "Čestitke! Našel si vse zvezde v " + number_guesses + " poskus";
+            if ((number_guesses - 1) % 100 == 0)
+                celicaBes += "u!";
+            else
+                celicaBes += "ih!";
+            g("modalInhalt").innerHTML = celicaBes;
+            modal.style.display = "block";
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+        } else {
+            if (something_found)
+                audio_correct.play();
+        }
+
+
     }
-    if (!something_found)
-      audio_false.play();
-    drawStars();
-
-  number_guesses++;
-
-  // preveri, če je našel vse
-  var all_found = true;
-  for (const el of zvezda_arr) {
-    if (!(el.found))
-      all_found = false;
-  }
-  if (all_found) {
-    btn_resitev.innerHTML = skrij_text;
-    btn_resitev.style.display = "none";
-      var audio_end = new Audio("end.wav");
-      audio_end.play();
-      var modal = g("infoModal");
-    	var span = document.getElementsByClassName("close")[0];
-    	var celicaBes = "Čestitke! Našel si vse zvezde v " + number_guesses + " poskus";
-      if (number_guesses == 1)
-        celicaBes += "u!";
-      else
-        celicaBes += "ih!";
-      g("modalInhalt").innerHTML = celicaBes;
-    	modal.style.display = "block";
-    	span.onclick = function() {
-    	  modal.style.display = "none";
-    	}
-    	window.onclick = function(event) {
-    	  if (event.target == modal) {
-    	    modal.style.display = "none";
-    	  }
-    	}
-
-  } else {
-    if (something_found)
-      audio_correct.play();
-  }
-
-
-}
 
 }
 canvas.addEventListener("click", checkStars);
@@ -139,35 +138,34 @@ function getURL() {
         "&clock=Jan%2001%202020%2001:00:00&showplanets=false&showplanetlabels=false&showdate=false&showposition=false&magnitude=6");
 }
 
-function drawStar(x, y, r, color, lw=0, strokeColor="black") {
-  ctx.beginPath();
-  ctx.fillStyle = color;
-  ctx.arc(x, y, r, 0, 2 * Math.PI);
-  ctx.fill();
-  ctx.lineWidth = lw;
-  ctx.strokeStyle = strokeColor;
-  ctx.stroke();
+function drawStar(x, y, r, color, lw = 0, strokeColor = "black") {
+    ctx.beginPath();
+    ctx.fillStyle = color;
+    ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.lineWidth = lw;
+    ctx.strokeStyle = strokeColor;
+    ctx.stroke();
 }
 
 function drawStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (const el of zvezda_arr) {
         if (el.found) {
-          drawStar(el.x, el.y, el.r, "#09e81c", el.r * 0.4, "black");
-        }
-        else {
-          drawStar(el.x, el.y, el.r, "black");
+            drawStar(el.x, el.y, el.r, "#09e81c", el.r * 0.4, "black");
+        } else {
+            drawStar(el.x, el.y, el.r, "black");
         }
     }
 }
 
 // dodaj solution naknadno
 function drawSolution() {
-  for (const el of zvezda_arr) {
-      if (!(el.found)) {
-        drawStar(el.x, el.y, 8, "red", 2, "black");
-      }
-  }
+    for (const el of zvezda_arr) {
+        if (!(el.found)) {
+            drawStar(el.x, el.y, 8, "red", 2, "black");
+        }
+    }
 }
 
 function updateNavodila(len) {
@@ -185,10 +183,10 @@ function updateNavodila(len) {
 }
 // Dodaj popolnoma nove zvezde, osveži
 function restart() {
-  number_guesses = 0;
-  btn_resitev.style.display = "block";
-  btn_resitev.innerHTML = pokazi_text;
-  // generiraj zvezde
+    number_guesses = 0;
+    btn_resitev.style.display = "block";
+    btn_resitev.innerHTML = pokazi_text;
+    // generiraj zvezde
     zvezda_arr = [];
     u_azimuth = Math.random() * 360;
     u_longitude = Math.random() * 360 - 180;
@@ -198,12 +196,12 @@ function restart() {
     iframe.onload = function() {
         var len = glasbene.length;
         if (nakljucneMagnitude_btn.checked) {
-          const nakljucneInput = g("nakljucneInput");
-          if (!nakljucneInput.value) {
-            alert("Vnesi veljavno število odvečnih zvezd!");
-          } else {
-            len = nakljucneInput.value;
-          }
+            const nakljucneInput = g("nakljucneInput");
+            if (!nakljucneInput.value) {
+                alert("Vnesi veljavno število odvečnih zvezd!");
+            } else {
+                len = nakljucneInput.value;
+            }
         }
         for (var i = 0; i < len; i++) {
             var rand1 = Math.random() * (canvas.width - 16) + 8;
@@ -217,7 +215,7 @@ function restart() {
             if (nakljucneMagnitude_btn.checked) {
                 const nakljucneInput = g("nakljucneInput");
                 if (nakljucneInput.value) {
-                  zvezda.r = mag_to_r(Math.random() * 3.5 + 1.0);
+                    zvezda.r = mag_to_r(Math.random() * 3.5 + 1.0);
                 }
             }
             zvezda_arr.push(zvezda);
@@ -241,7 +239,7 @@ function restart() {
 };
 
 function showSolution() {
-  drawStars();
+    drawStars();
     if (btn_resitev.innerHTML == skrij_text) {
         btn_resitev.innerHTML = pokazi_text;
     } else {

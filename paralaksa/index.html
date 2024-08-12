@@ -30,13 +30,13 @@
         <a href="../messier">Messier</a>
       </li>
       <li>
-        <a href="../odvecne_zvezde">Zvezde</a>
+        <a href="../odvecne-zvezde">Zvezde</a>
       </li>
       <li>
         <a class="active" href="../paralaksa">Paralaksa</a>
       </li>
       <li>
-        <a href="../uporabne_povezave">Povezave</a>
+        <a href="../uporabne-povezave">Povezave</a>
       </li>
     </ul>
 
@@ -53,44 +53,44 @@
       <tr>
         <td>RA1:</td>
         <td>
-          <input id="ra1" type="time" oninput="izracunajPolozaj()" step="0.1" value="18:56:40.370" />
+          <input id="ra1" type="time" oninput="izracunajPolozaj()" step="0.1" />
         </td>
       </tr>
       <tr>
         <td>Dec.1:</td>
         <td>
-          <input id="dec11" type="number" step="1" min="-90" max="90" oninput="izracunajPolozaj()" value="-26" />° <input id="dec12" type="number" step="1" min="0" max="60" oninput="izracunajPolozaj()" value="16" />' <input id="dec13" type="number" step="0.01" min="0" max="60" oninput="izracunajPolozaj()" value="6.1" />"
+          <input id="dec11" type="number" step="1" min="-90" max="90" oninput="izracunajPolozaj()" />° <input id="dec12" type="number" step="1" min="0" max="60" oninput="izracunajPolozaj()" />' <input id="dec13" type="number" step="0.01" min="0" max="60" oninput="izracunajPolozaj()" />"
         </td>
       </tr>
       <tr>
         <td>RA2:</td>
         <td>
-          <input id="ra2" type="time" oninput="izracunajPolozaj()" step="0.1" value="19:04:03.390" />
+          <input id="ra2" type="time" oninput="izracunajPolozaj()" step="0.1" />
         </td>
       </tr>
       <tr>
         <td>Dec.2:</td>
         <td>
-          <input id="dec21" type="number" step="1" min="-90" max="90" oninput="izracunajPolozaj()" value="-29" />° <input id="dec22" type="number" step="1" min="0" max="60" oninput="izracunajPolozaj()" value="50" />' <input id="dec23" type="number" step="0.01" min="0" max="60" oninput="izracunajPolozaj()" value="51.2" />"
+          <input id="dec21" type="number" step="1" min="-90" max="90" oninput="izracunajPolozaj()" />° <input id="dec22" type="number" step="1" min="0" max="60" oninput="izracunajPolozaj()" />' <input id="dec23" type="number" step="0.01" min="0" max="60" oninput="izracunajPolozaj()" />"
         </td>
       </tr>
       <tr>
         <td>d<sub>1</sub>: </td>
         <td>
-          <input value="156.5" id="d1" type="number" oninput="izracunajPolozaj()" />
+          <input id="d1" type="number" oninput="izracunajPolozaj()" />
         </td>
       </tr>
       <tr>
         <td>d<sub>2</sub>: </td>
         <td>
-          <input value="113.1" id="d2" type="number" oninput="izracunajPolozaj()" />
+          <input id="d2" type="number" oninput="izracunajPolozaj()" />
         </td>
       </tr>
       <tr>
         <td>φ:
         </td>
         <td>
-          <input value="64.73" id="fi" type="number" oninput="izracunajPolozaj()" min="-180" max="180" />°
+          <input id="fi" type="number" oninput="izracunajPolozaj()" min="-180" max="180" />°
         </td>
       </tr>
     </table>
@@ -109,61 +109,61 @@
       <tr>
         <td>Geo. širina 1:</td>
         <td>
-          <input id="fi1" type="number" min="-90" max="90" value="43.605467" step="0.01" oninput="izracunajVisino()" />°
+          <input id="fi1" type="number" min="-90" max="90" step="0.01" oninput="izracunajVisino()" />°
         </td>
       </tr>
       <tr>
         <td>Geo. dolžina 1:</td>
         <td>
-          <input id="lambda1" type="number" min="-180" max="180" value="7.071414" step="0.01" oninput="izracunajVisino()" />°
+          <input id="lambda1" type="number" min="-180" max="180" step="0.01" oninput="izracunajVisino()" />°
         </td>
       </tr>
       <tr>
         <td>Nad. višina 1:</td>
         <td>
-          <input id="h1" type="number" min="0" max="9999" value="90" oninput="izracunajVisino()" /> m
+          <input id="h1" type="number" min="0" max="9999" oninput="izracunajVisino()" /> m
         </td>
       </tr>
       <tr>
         <td>Geo. širina 2:</td>
         <td>
-          <input id="fi2" type="number" min="-90" max="90" value="45.79918" step="0.01" oninput="izracunajVisino()" />°
+          <input id="fi2" type="number" min="-90" max="90" step="0.01" oninput="izracunajVisino()" />°
         </td>
       </tr>
       <tr>
         <td>Geo. dolžina 2:</td>
         <td>
-          <input id="lambda2" type="number" min="-180" max="180" value="14.687" step="0.01" oninput="izracunajVisino()" />°
+          <input id="lambda2" type="number" min="-180" max="180" step="0.01" oninput="izracunajVisino()" />°
         </td>
       </tr>
       <tr>
         <td>Nad. višina 2:</td>
         <td>
-          <input id="h2" type="number" min="0" max="9999" value="639" oninput="izracunajVisino()" /> m
+          <input id="h2" type="number" min="0" max="9999" oninput="izracunajVisino()" /> m
         </td>
       </tr>
       <tr>
         <td>RA1:</td>
         <td>
-          <input id="vra1" type="time" oninput="izracunajVisino()" step="0.1" value="14:18:33.780" />
+          <input id="vra1" type="time" oninput="izracunajVisino()" step="0.1" />
         </td>
       </tr>
       <tr>
         <td>Dec.1:</td>
         <td>
-          <input id="vdec11" type="number" step="1" min="-90" max="90" oninput="izracunajVisino()" value="50" />° <input id="vdec12" type="number" step="1" min="0" max="60" oninput="izracunajVisino()" value="5" />' <input id="vdec13" type="number" step="0.01" min="0" max="60" oninput="izracunajVisino()" value="16.8" />"
+          <input id="vdec11" type="number" step="1" min="-90" max="90" oninput="izracunajVisino()" />° <input id="vdec12" type="number" step="1" min="0" max="60" oninput="izracunajVisino()" />' <input id="vdec13" type="number" step="0.01" min="0" max="60" oninput="izracunajVisino()" />"
         </td>
       </tr>
       <tr>
         <td>RA2:</td>
         <td>
-          <input id="vra2" type="time" oninput="izracunajVisino()" step="0.1" value="13:16:45.820" />
+          <input id="vra2" type="time" oninput="izracunajVisino()" step="0.1" />
         </td>
       </tr>
       <tr>
         <td>Dec.2:</td>
         <td>
-          <input id="vdec21" type="number" step="1" min="-90" max="90" oninput="izracunajVisino()" value="12" />° <input id="vdec22" type="number" step="1" min="0" max="60" oninput="izracunajVisino()" value="14" />' <input id="vdec23" type="number" step="0.01" min="0" max="60" oninput="izracunajVisino()" value="19.0" />"
+          <input id="vdec21" type="number" step="1" min="-90" max="90" oninput="izracunajVisino()" />° <input id="vdec22" type="number" step="1" min="0" max="60" oninput="izracunajVisino()" />' <input id="vdec23" type="number" step="0.01" min="0" max="60" oninput="izracunajVisino()" />"
         </td>
       </tr>
     </table>
