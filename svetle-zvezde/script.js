@@ -7,7 +7,11 @@ var najvecjiIndex;
 var currentStar;
 
 function generirajZvezdo() {
-    currentStar = Math.floor(Math.random() * najvecjiIndex);
+    var randInd;
+    do {
+        randInd = Math.floor(Math.random() * najvecjiIndex);
+    } while (currentStar == randInd);
+    currentStar = randInd;
     g("imeZvezde").innerHTML = "" + zvezdeList[currentStar].Letter + " " + zvezdeList[currentStar].Constellation + ": ";
 }
 
@@ -30,9 +34,11 @@ function preveri() {
     if (text.toLowerCase() == zvezda.Name.toLowerCase()) {
         pravilni++;
         g("pravilniP").innerHTML = "" + pravilni + " pravilnih";
+        g("odgovor").style.color = "#79fc84";
     } else {
         napacni++;
         g("napacniP").innerHTML = "" + napacni + " napačnih";
+        g("odgovor").style.color = "#fc7979";
     }
     var opisText = zvezda.Letter + " " + zvezda.Constellation + ": " + zvezda.HR_classification + ", " + zvezda.Magnitude + "<sup>mag</sup>";
     g("podrobenOpis").innerHTML = opisText;

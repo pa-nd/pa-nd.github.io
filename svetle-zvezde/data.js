@@ -30,7 +30,7 @@ zvezdeList = [
         "Name": "Rigil Kentaurus",
         "HR_classification": "HR 5459",
         "Letter": "α",
-        "Constellation": "Cen",
+        "Constellation": "Cen A",
         "Magnitude": "-0.01",
         "RA": "219.902066",
         "Dec": "-60.833975"
@@ -183,7 +183,7 @@ zvezdeList = [
         "Name": "Toliman",
         "HR_classification": "HR 5460",
         "Letter": "α",
-        "Constellation": "Cen",
+        "Constellation": "Cen B",
         "Magnitude": "1.35",
         "RA": "219.896096",
         "Dec": "-60.837528"
