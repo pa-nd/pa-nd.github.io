@@ -128,6 +128,7 @@ function checkStars(evt) {
 }
 canvas.addEventListener("click", checkStars);
 
+// TODO dodaj gridlines_eq
 function getURL() {
     return ("https://virtualsky.lco.global/embed/index.html?cardinalpoints=false&az=" + u_azimuth +
         "&longitude=" + u_longitude +

@@ -18,13 +18,16 @@ button:hover {
 button:active {
   background-color: #777777;
 }
-
+.main {
+  overflow-x:scroll;
+}
 #outsideWrapper {
   position: relative;
   width: 800px;
   height: 500px;
   margin: auto;
   border: 3px solid black;
+  
 }
 
 #insideWrapper {
