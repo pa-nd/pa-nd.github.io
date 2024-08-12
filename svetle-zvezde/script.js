@@ -34,8 +34,9 @@ function preveri() {
         napacni++;
         g("napacniP").innerHTML = "" + napacni + " napačnih";
     }
-    var opisText = zvezda.Letter + " " + zvezda.Constellation + ": <b>" + zvezda.Name + "</b> (" + zvezda.HR_classification + "), " + zvezda.Magnitude + "<sup>mag</sup>";
+    var opisText = zvezda.Letter + " " + zvezda.Constellation + ": " + zvezda.HR_classification + ", " + zvezda.Magnitude + "<sup>mag</sup>";
     g("podrobenOpis").innerHTML = opisText;
+    g("odgovor").innerHTML = zvezda.Name;
     g("igraInput").value = "";
     generirajZvezdo();
 }
