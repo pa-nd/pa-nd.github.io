@@ -118,3 +118,9 @@ hr {
   text-decoration: none;
   cursor: pointer;
 }
+
+input {
+  border-radius: 7px;
+  padding: 5px;
+  border: none;
+}
