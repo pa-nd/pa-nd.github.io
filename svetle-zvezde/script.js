@@ -5,6 +5,7 @@ var pravilni = 0;
 var napacni = 0;
 var najvecjiIndex;
 var currentStar;
+var planetarium;
 
 function generirajZvezdo() {
     var randInd;
@@ -17,6 +18,7 @@ function generirajZvezdo() {
 
 
 function zacniIgro() {
+
     const mejnaMagnituda = parseFloat(g("mejnaMagnituda").value);
     g("izborDiv").style.display = "none";
     g("igraDiv").style.display = "block";
@@ -26,6 +28,7 @@ function zacniIgro() {
             break;
         }
     }
+    
     generirajZvezdo();
 }
 function preveri() {
@@ -44,6 +47,33 @@ function preveri() {
     g("podrobenOpis").innerHTML = opisText;
     g("odgovor").innerHTML = zvezda.Name;
     g("igraInput").value = "";
+
+    if (napacni + pravilni == 1) {
+    planetarium = S.virtualsky({
+		'id': 'starmap1',
+		'projection': 'gnomic',
+		'ra': parseFloat(zvezda.RA),
+		'dec': parseFloat(zvezda.Dec),
+		'ground': false,
+		'constellations': true,
+		'fov': 25,
+        'showposition': false,
+        'showdate': false,
+        'scalestars': 2,
+        'showplanets': false,
+        'showplanetlabels': false,
+	});
+
+    } else {
+        planetarium.panTo(parseFloat(zvezda.RA),parseFloat(zvezda.Dec), 1000);
+    }
+    
+	planetarium.addPointer({
+		'ra':parseFloat(zvezda.RA),
+		'dec':parseFloat(zvezda.Dec),
+		'label':zvezda.Letter + " " + zvezda.Constellation,
+		'colour':'rgb(255,220,220)'
+	});
     generirajZvezdo();
 }
 function search(e) {
