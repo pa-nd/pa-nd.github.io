@@ -62,6 +62,7 @@ function preveri() {
         'scalestars': 2,
         'showplanets': false,
         'showplanetlabels': false,
+        'cardinalpoints': false
 	});
 
     } else {
