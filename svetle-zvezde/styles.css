@@ -30,3 +30,16 @@ button {
   #odgovor {
     font-size: larger;
   }
+  #mejnaMagnituda {
+    border-radius: 10px;
+    padding: 7px;
+    border: none;
+    font-size: 17px;
+    width: 50px;
+  }
+  #igraInput {
+    border-radius: 7px;
+    padding: 7px;
+    border: none;
+    font-size: 17px;
+  }
