@@ -7,7 +7,7 @@ var pravilniList = [];
 var napacniList = [];
 var utezi = [];
 var randomUtezi = [];
-var najvecjiIndex;
+var najvecjiIndex = zvezdeList.length;
 var currentStar;
 var planetarium;
 
