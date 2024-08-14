@@ -59,13 +59,14 @@ function preveri() {
         pravilniList[currentStar]++;
         g("pravilniP").innerHTML = "" + pravilni + " pravilnih";
         g("odgovor").style.color = "#79fc84";
+        utezi[currentStar] *= 0.2;
     } else {
         napacni++;
         napacniList[currentStar]++;
         g("napacniP").innerHTML = "" + napacni + " napačnih";
         g("odgovor").style.color = "#fc7979";
+        utezi[currentStar] /= 0.2;
     }
-    utezi[currentStar] = 1 + 3 * (napacniList[currentStar]) / (napacniList[currentStar] + pravilniList[currentStar]);
 
     var opisText = zvezda.Letter + " " + zvezda.Constellation + ": " + zvezda.HR_classification + ", " + zvezda.Magnitude + "<sup>mag</sup>";
     g("podrobenOpis").innerHTML = opisText;
