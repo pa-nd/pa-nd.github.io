@@ -1,0 +1,21 @@
+html {
+    scroll-behavior: smooth;
+}
+h1 {
+    line-height: 1;
+}
+table, tr, td {
+    text-align: center;
+    border: 1px solid #aaa;
+    border-collapse: collapse;
+    padding: 18px;
+}
+td {
+  background-color: rgba(53, 53, 53, 1.0);
+}
+.legend {
+    background-color: rgba(40, 40, 40, 1.0);
+}
+td:not(.legend) {
+    letter-spacing: 1.5px;
+}
