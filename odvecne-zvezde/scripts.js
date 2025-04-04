@@ -158,6 +158,9 @@ function drawStars() {
             drawStar(el.x, el.y, el.r, "black");
         }
     }
+    if (btn_resitev.innerHTML == skrij_text) {
+        drawSolution()
+    }
 }
 
 // dodaj solution naknadno
@@ -184,6 +187,11 @@ function updateNavodila(len) {
 }
 // Dodaj popolnoma nove zvezde, osveži
 function restart() {
+    if (nakljucneMagnitude_btn.checked && !g("nakljucneInput").value) {
+        alert("Vnesi veljavno število odvečnih zvezd!");
+        return;
+    }
+
     number_guesses = 0;
     btn_resitev.style.display = "block";
     btn_resitev.innerHTML = pokazi_text;
@@ -198,11 +206,7 @@ function restart() {
         var len = glasbene.length;
         if (nakljucneMagnitude_btn.checked) {
             const nakljucneInput = g("nakljucneInput");
-            if (!nakljucneInput.value) {
-                alert("Vnesi veljavno število odvečnih zvezd!");
-            } else {
-                len = nakljucneInput.value;
-            }
+            len = nakljucneInput.value;
         }
         for (var i = 0; i < len; i++) {
             var rand1 = Math.random() * (canvas.width - 16) + 8;
@@ -240,13 +244,12 @@ function restart() {
 };
 
 function showSolution() {
-    drawStars();
     if (btn_resitev.innerHTML == skrij_text) {
         btn_resitev.innerHTML = pokazi_text;
     } else {
-        drawSolution();
         btn_resitev.innerHTML = skrij_text;
     }
+    drawStars();
 };
 
 function showConstellations() {

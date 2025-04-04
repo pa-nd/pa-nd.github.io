@@ -1,6 +1,9 @@
 html {
   scroll-behavior: smooth;
 }
+html, body {
+  overscroll-behavior-y: contain;
+}
 
 #tabela,
 td,
@@ -34,14 +37,16 @@ td:hover {
 
 .finder_chart, .skica {
   margin: 10px;
-  border: 2px solid #0000aa;
+  border: 1px solid #0000aa;
+  border-radius: 10px;
 }
 .finder_chart {
   width: 100%;
   max-width: 600px;
 }
 .skica {
-  width: 300px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .fa-arrow-left,

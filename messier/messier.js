@@ -11,18 +11,17 @@ var kontrolDiv = g("kontrolDiv");
 var kontrolNavodila = g("kontrolNavodila");
 
 // Parametri v tabeli, sp = specifikacije parametrov
-var curLayout = [sp.iau, sp.l_ozvezdje];
+var curLayout = [sp.iau, sp.tip, sp.nav_mag];
 // Parametri zunaj tabele
-var remLayout = [sp.ozvezdje, sp.nav_mag, sp.tip, sp.tezavnost, sp.ngc];
+var remLayout = [sp.ozvezdje, sp.l_ozvezdje, sp.tezavnost, sp.ngc];
 // Vrstni red objektov
-var vrstniRed = [];
-for (var i = 0; i < 110; i++) {
-	vrstniRed.push(i);
-}
+var vrstniRed = [...Array(110).keys()];
 // Skriti način
 var prikazanoVse = true;
 // Prikazani kontrolerji
 var kontrolerji = false;
+
+var trenutniN;
 
 ////////////////////
 ///// FUNKCIJE /////
@@ -169,23 +168,28 @@ function skrijVrstico(id) {
 
 // Ko kliknem na info ...
 function info(n) {
+	trenutniN = n;
 	var modal = g("infoModal");
 
 	var span = document.getElementsByClassName("close")[0];
 
-	var celicaBes = "<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" alt=\"Karta za M" + (n+1) + "\" class=\"finder_chart\" />";
-	celicaBes += "<img src=\"skice/s" + (n+1) + ".jpg\" alt=\"Skica od M" + (n+1) + "\" class=\"skica\" />";
+	var celicaBes = "<img src=\"karte/M" + (n+1) + ".png\" alt=\"Skica od M" + (n+1) + "\" class=\"skica\" />";
+	celicaBes += "<img src=\"negativi/M" + (n+1) + "_Finder_Chart-1.jpg\" alt=\"Karta za M" + (n+1) + "\" class=\"finder_chart\" />";
 	g("modalInhalt").innerHTML = celicaBes;
 
 	modal.style.display = "block";
 
+	document.documentElement.style.overflow = "hidden";
+
 	span.onclick = function() {
 	  modal.style.display = "none";
+	  document.documentElement.style.overflow = "visible";
 	}
 
 	window.onclick = function(event) {
 	  if (event.target == modal) {
 	    modal.style.display = "none";
+		document.documentElement.style.overflow = "visible";
 	  }
 	}
 }
@@ -251,20 +255,52 @@ function kontrolerDesno(element) {
 ///// VRSTNI RED /////
 // Naključno razporedi
 function nakljucno() {
-	vrstniRed = vrstniRed.sort((a, b) => 0.5 - Math.random());
+	vrstniRed = [...Array(110).keys()].sort((a, b) => 0.5 - Math.random());
 	init();
 }
 // Razvrsti od 1 do 110
 function razvrsti() {
-	for (var i = 0; i < 110; i++) {
-		vrstniRed[i] = i;
-	}
+	vrstniRed = [...Array(110).keys()];
 	init();
 }
 // Maratonski vrstni red
 function vrstniRedMaraton() {
 	vrstniRed = maratonVrstniRed;
 	init();
+}
+
+
+g("infoModal").addEventListener('touchstart', function (event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+	timestart = event.timeStamp;
+}, false);
+
+g("infoModal").addEventListener('touchend', function (event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+	timeend = event.timeStamp;
+    handleGesture();
+}, false);
+
+
+function handleGesture() {
+	const distance = 300;
+	if (timeend - timestart < 190) {
+		if (touchstartY - touchendY > distance) {
+			var i = vrstniRed.indexOf(trenutniN);
+			if (i != vrstniRed.length-1) {
+				info(vrstniRed[i+1]);
+			}
+		}
+
+		if (-touchstartY + touchendY > distance) {
+			var i = vrstniRed.indexOf(trenutniN);
+			if (i != 0) {
+				info(vrstniRed[i-1]);
+			}
+		}
+	}
 }
 
 

@@ -355,7 +355,7 @@ var data = [
     "l_ozvezdje": "Triangulum",
     "ozvezdje": "Trikotnik",
     "nav_mag": "5,7",
-    "tip": "Razs. kop.",
+    "tip": "Galaksija",
     "ngc": 598,
     "tezavnost": 3
   },
