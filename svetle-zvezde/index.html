@@ -76,10 +76,47 @@
     <h4 id="naslov2"></h4>
 
     <div id="izborDiv">
-    <label for="mejnaMagnituda">Izberi maksimalno želeno magnitudo: </label><input type="number" id="mejnaMagnituda" name="mejnaMagnituda" min="0" max="6" value="2" step="0.1" />
+      <hr />
+    <h2>Po magnitudah</h2>
+    <p><label for="spodnjaMagnituda">Izberi <b>minimalno</b> želeno magnitudo: </label><input type="number" id="spodnjaMagnituda", name="spodnjaMagnituda" min="-2" max="6" value="-1.5" step="0.1" /></p>
 
-    <button type="button" onclick="zacniIgro()">Potrdi</button>
-</div>
+    <p><label for="mejnaMagnituda">Izberi <b>maksimalno</b> želeno magnitudo: </label><input type="number" id="mejnaMagnituda" name="mejnaMagnituda" min="0" max="6" value="2" step="0.1" /></p>
+
+    <p><button type="button" onclick="omejiMagnitude()">Potrdi</button></p>
+
+    <hr />
+
+    <h2>Po Bayerju</h2>
+
+    <select name="Bayer-s" id="Bayer-s">
+      <option value="α" selected="selected">α</option>
+      <option value="β">β</option>
+      <option value="γ">γ</option>
+      <option value="δ">δ</option>
+      <option value="ε">ε</option>
+      <option value="ζ">ζ</option>
+      <option value="η">η</option>
+      <option value="θ">θ</option>
+      <option value="ι">ι</option>
+      <option value="κ">κ</option>
+      <option value="λ">λ</option>
+      <option value="μ">μ</option>
+      <option value="ν">ν</option>
+      <option value="ξ">ξ</option>
+      <option value="ο">ο</option>
+      <option value="π">π</option>
+      <option value="ρ">ρ</option>
+      <option value="σ">σ</option>
+      <option value="τ">τ</option>
+      <option value="υ">υ</option>
+      <option value="φ">φ</option>
+      <option value="χ">χ</option>
+      <option value="ψ">ψ</option>
+      <option value="ω">ω</option>
+    </select><button type="button" onclick="poBayerju()" for="Bayer-s">Potrdi</button>
+
+  </div>
+
 <div id="igraDiv" style="display:none;">
     <label for="igraInput" id="imeZvezde"></label><input type="text" id="igraInput" name="igraInput" onkeypress="search(event)" />
     <button type="button" onclick="preveri()">Potrdi</button>
@@ -88,8 +125,19 @@
     <p id="pravilniP"></p>
     <p id="napacniP"></p>
     <div id="starmap1" style="width:400px;height:400px;"></div>
+    <p>
+      <button type="button" onclick="preglejZvezde()">Preglej zvezde</button>
+    </p>
     <!--<iframe id="ifr" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowTransparency="true" height="500" width="500" style="display:none;"></iframe>-->
 </div>
+
+<div id="tabelaDiv" style="display:none;">
+    <p>
+      <button type="button" onclick="nadaljuj()">Nadaljuj</button>
+    </p>
+    <table id="tabela"></table>
+</div>
+
     </div>
     <script src="data.js"></script>
     <script src="script.js"></script>

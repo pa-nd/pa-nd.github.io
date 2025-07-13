@@ -1,4 +1,4 @@
-zvezdeList = [
+var zvezdeList = [
     {
         "Name": "Sirius",
         "HR_classification": "HR 2491",

@@ -30,7 +30,7 @@ button {
   #odgovor {
     font-size: larger;
   }
-  #mejnaMagnituda {
+  #mejnaMagnituda, #spodnjaMagnituda {
     width: 50px;
     font-size: 17px;
   }
@@ -43,3 +43,18 @@ button {
   #starmap1 a {
     color: black;
   }
+
+#tabela,
+td,
+tr,
+th {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+  user-select: none;
+}
+
+td,
+th {
+  background-color: #222222;
+}
