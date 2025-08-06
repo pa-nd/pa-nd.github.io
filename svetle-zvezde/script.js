@@ -72,7 +72,6 @@ function preglejZvezde() {
         else if (pravilniList[elem] - napacniList[elem] > 0)
             celica.style.backgroundColor = "#0d750c";
     }
-
 }
 function nadaljuj() {
     g("igraDiv").style.display = "block";
@@ -140,18 +139,18 @@ function omejiMagnitude() {
 }
 
 function poBayerju() {
-    const crka = g("Bayer-s").value;
-    //const abeceda = ["alpha", "beta", "gamma", "delta", "epsilon", "zeta", "eta",
-    //    "theta", "iota", "kappa", "lambda", "mu", "nu", "xi", "omicron", "pi",
-    //    "rho", "sigma", "tau", "upsilon", "phi", "chi", "psi", "omega"
-    //];
+    const index = parseInt(g("Bayer-s").value);
     const abeceda = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "μ",
         "ν", "ξ", "ο", "π", "ρ", "σ", "τ", "υ", "φ", "χ", "ψ", "ω"];
-    const index = abeceda.indexOf(crka);
     const mutiranaAbeceda = abeceda.slice(0, index+1);
     for (var i = 0; i < zvezdeList.length; i++) {
-        if (mutiranaAbeceda.includes(zvezdeList[i]["Letter"]))
-            maska.push(i);
+        var str = zvezdeList[i]["Letter"];
+        for (var j = 0; j < str.length; j++) {
+            if (mutiranaAbeceda.includes(str[j])) {
+                maska.push(i);
+                break;
+            }
+        }
     }
     pravilniList = Array(maska.length).fill(0);
     napacniList = Array(maska.length).fill(0);
@@ -160,7 +159,7 @@ function poBayerju() {
     
     g("izborDiv").style.display = "none";
     g("igraDiv").style.display = "block";
-    g("naslov2").innerHTML = "Izbrane vse zvezde do " + crka + " (" + (maska.length) + " zvezd)";
+    g("naslov2").innerHTML = "Izbrane vse zvezde do " + mutiranaAbeceda[index] + " (" + (maska.length) + " zvezd)";
 
     generirajZvezdo();
 }
