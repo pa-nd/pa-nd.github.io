@@ -75,7 +75,8 @@
     <h1>Nebesne koordinate</h1>
     <label for="RA">RA: </label><input type="time" id="RA"/><br/>
     <label for="Dec">Dec: </label><input type="number" id="Dec" name="Dec" step="0.1"/><br/>
-    <button type="button" onclick="potrdi()">Potrdi</button>
+    <button type="button" onclick="potrdi()" id="potrdiBtn">Potrdi</button>
+    <button type="button" onclick="novo()" style="display: none;" id="novoBtn">Novo</button>
     <br/>
     <p id="odgovor"></p>
         <div id="starmap1" style="width:800px; height: 500px;"></div>
