@@ -13,7 +13,28 @@ var currentStar;
 var planetarium;
 var uteziFactor = 3;
 var maska = [];
+var maraton = false;
 
+function zvezda(n) {
+    if (n % 100 == 1)
+        return n + " zvezd"
+    else if (n % 100 == 2)
+        return n + " zvezdi"
+    else if (n % 100 == 3 || n % 100 == 4)
+        return n + " zvezde"
+    else
+        return n + " zvezd"
+}
+function zvezdo(n) {
+    if (n % 100 == 1)
+        return n + " zvezdo"
+    else if (n % 100 == 2)
+        return n + " zvezdi"
+    else if (n % 100 == 3 || n % 100 == 4)
+        return n + " zvezde"
+    else
+        return n + " zvezd"
+}
 
 // Dodaj celico
 // vrsta, številka vrstice, zap. št. objekta, kodno ime
@@ -79,25 +100,30 @@ function nadaljuj() {
 }
 
 function generirajZvezdo() {
-    var randInd;
+    if (maraton) {
+        currentStar++;
+        g("naslov2").innerHTML = "Poznal si " + zvezdo(currentStar) + ".";
+    } else {
+        var randInd;
 
-    var sum = 0;
-    randomUtezi[0] = 0;
-    for (var i = 1; i < randomUtezi.length; i++) {
-        sum += utezi[i-1];
-        randomUtezi[i] = sum;
-    }
-    
-    var randomNum = Math.random() * randomUtezi[randomUtezi.length-1];
-
-    for (var i = 0; i <= maska.length; i++) {
-        if (randomUtezi[i] >= randomNum) {
-            randInd = i-1;
-            break;
+        var sum = 0;
+        randomUtezi[0] = 0;
+        for (var i = 1; i < randomUtezi.length; i++) {
+            sum += utezi[i-1];
+            randomUtezi[i] = sum;
         }
-    }
+        
+        var randomNum = Math.random() * randomUtezi[randomUtezi.length-1];
 
-    currentStar = randInd;
+        for (var i = 0; i <= maska.length; i++) {
+            if (randomUtezi[i] >= randomNum) {
+                randInd = i-1;
+                break;
+            }
+        }
+
+        currentStar = randInd;
+    }
     g("imeZvezde").innerHTML = "" + zvezdeList[maska[currentStar]].Letter + " " + zvezdeList[maska[currentStar]].Constellation + ": ";
 }
 
@@ -128,7 +154,7 @@ function omejiMagnitude() {
             
         g("izborDiv").style.display = "none";
         g("igraDiv").style.display = "block";
-        g("naslov2").innerHTML = "Med " + spodnjaMagnituda + ". in " + mejnaMagnituda + ". magnitudo (" + (maska.length) + " zvezd)";
+        g("naslov2").innerHTML = "Med " + spodnjaMagnituda + ". in " + mejnaMagnituda + ". magnitudo (" + zvezda(maska.length) + ")";
 
         generirajZvezdo();
     } else {
@@ -159,7 +185,7 @@ function poBayerju() {
     
     g("izborDiv").style.display = "none";
     g("igraDiv").style.display = "block";
-    g("naslov2").innerHTML = "Izbrane vse zvezde do " + mutiranaAbeceda[index] + " (" + (maska.length) + " zvezd)";
+    g("naslov2").innerHTML = "Izbrane vse zvezde do " + mutiranaAbeceda[index] + " (" + zvezda(maska.length) + ")";
 
     generirajZvezdo();
 }
@@ -174,6 +200,11 @@ function preveri() {
         g("odgovor").style.color = "#79fc84";
         utezi[currentStar] /= uteziFactor;
     } else {
+        if (maraton) {
+            alert("Poznaš " + zvezdo(currentStar) + "!");
+            g("preveriButton").style.display = "none";
+            g("igraInput").style.display = "none";
+        }
         napacni++;
         napacniList[currentStar]++;
         g("napacniP").innerHTML = "" + napacni + " napačnih";
@@ -214,11 +245,25 @@ function preveri() {
 		'label':zvezda.Letter + " " + zvezda.Constellation,
 		'colour':'rgb(255,220,220)'
 	});
-    generirajZvezdo();
+    if (!(maraton && napacni))
+        generirajZvezdo();
 }
 function search(e) {
     e = e || window.event;
     if(e.keyCode == 13) {
         preveri();
     }
+}
+
+function zvezdniMaraton() {
+    maraton = true;
+    for (var i = 0; i < zvezdeList.length; i++) {
+        maska.push(i);
+    }
+    g("izborDiv").style.display = "none";
+    g("preglej").style.display = "none";
+    g("igraDiv").style.display = "block";
+
+    currentStar = -1;
+    generirajZvezdo();
 }

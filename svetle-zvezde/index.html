@@ -115,17 +115,21 @@
       <option value="23">ω</option>
     </select><button type="button" onclick="poBayerju()" for="Bayer-s">Potrdi</button>
 
+    <hr />
+
+    <h2>Zvezdni maraton</h2>
+    <p><button type="button" onclick="zvezdniMaraton()">Potrdi</button></p>
   </div>
 
 <div id="igraDiv" style="display:none;">
     <label for="igraInput" id="imeZvezde"></label><input type="text" id="igraInput" name="igraInput" onkeypress="search(event)" />
-    <button type="button" onclick="preveri()">Potrdi</button>
+    <button type="button" id="preveriButton" onclick="preveri()">Potrdi</button>
     <p id="odgovor"></p>
     <p id="podrobenOpis"></p>
     <p id="pravilniP"></p>
     <p id="napacniP"></p>
     <div id="starmap1" style="width:400px;height:400px;"></div>
-    <p>
+    <p id="preglej">
       <button type="button" onclick="preglejZvezde()">Preglej zvezde</button>
     </p>
     <!--<iframe id="ifr" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowTransparency="true" height="500" width="500" style="display:none;"></iframe>-->
@@ -138,7 +142,7 @@
     <table id="tabela"></table>
 </div>
 
-    </div>
+  </div>
     <script src="data.js"></script>
     <script src="script.js"></script>
   </div>
